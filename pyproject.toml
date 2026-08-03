@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amp-design"
+version = "1.3.0"
+description = "Flow Matching generation and Pareto optimization for antimicrobial peptide design"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "einops>=0.8,<0.9",
+    "flow-matching==1.0.10",
+    "hydra-core>=1.3,<1.4",
+    "numpy>=1.24",
+    "omegaconf>=2.3,<2.4",
+    "pandas>=2.0",
+    "pymoo>=0.6.2,<0.7",
+    "pyyaml>=6.0",
+    "tensorboard>=2.21,<2.22",
+    "torch==2.8.0",
+    "torchdiffeq>=0.2.5,<0.3",
+]
+
+[project.optional-dependencies]
+optimization = [
+    "pyarrow>=14",
+    "scikit-learn==1.7.1",
+    "transformers==5.12.1",
+]
+dev = [
+    "pytest>=9.0,<10",
+    "ruff>=0.15,<0.16",
+]
+
+[project.scripts]
+amp-design = "amp_design.release_cli:main"
+amp-prepare = "amp_design.data:main"
+amp-train = "amp_design.training:main"
+amp-generate = "amp_design.generate:main"
+amp-sample-shards = "amp_design.production_sampling:main"
+amp-evaluate = "amp_design.evaluate:main"
+amp-apex-score = "amp_design.apex:main"
+amp-apex-pathogen-score = "amp_design.apex_pathogen:main"
+amp-pareto = "amp_design.pareto:main"
+amp-benchmark = "amp_design.benchmark:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+amp_design = ["templates/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

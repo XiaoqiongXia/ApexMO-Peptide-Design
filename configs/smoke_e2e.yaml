@@ -1,0 +1,132 @@
+# End-to-end mechanics test only. Every inference stage is real, but relaxed
+# hard thresholds deliberately prevent an empty result from this tiny sample.
+# Do not use this configuration to select scientific candidates.
+sampling_runs:
+  - checkpoint: models/generator/amp_flow_seed42_step3499.pt
+    output_root: outputs/smoke_e2e/sampling
+    training_seed: 42
+    lengths: [10, 20]
+    samples_per_length: 10
+    shard_size: 10
+    steps: 16
+    batch_size: 10
+    device: auto
+  - checkpoint: models/generator/amp_flow_seed123_step3499.pt
+    output_root: outputs/smoke_e2e/sampling
+    training_seed: 123
+    lengths: [10, 20]
+    samples_per_length: 10
+    shard_size: 10
+    steps: 16
+    batch_size: 10
+    device: auto
+  - checkpoint: models/generator/amp_flow_seed2025_step3499.pt
+    output_root: outputs/smoke_e2e/sampling
+    training_seed: 2025
+    lengths: [10, 20]
+    samples_per_length: 10
+    shard_size: 10
+    steps: 16
+    batch_size: 10
+    device: auto
+
+pipeline:
+  sampling_manifests:
+    - outputs/smoke_e2e/sampling/manifests/seed_42.json
+    - outputs/smoke_e2e/sampling/manifests/seed_123.json
+    - outputs/smoke_e2e/sampling/manifests/seed_2025.json
+  prepared_candidates: outputs/smoke_e2e/prepared_candidates.parquet
+  scored_candidates: outputs/smoke_e2e/scored_candidates.parquet
+  finalized_dir: outputs/smoke_e2e/legacy_finalized_unused
+  hard_filter_dir: outputs/smoke_e2e/legacy_hard_filter_unused
+  run_sampling: true
+  scoring_chunk_size: 100
+  mic_max_um: 1000000000.0
+  require_safety_ad: false
+  require_apex_uncertainty: false
+  require_novelty: false
+  require_stability: false
+  stability_min_hours: 1.0
+  require_known_amp_novelty: true
+  known_amp_reference: assets/known_amp/known_amp_sequences.fasta
+  known_amp_max_identity: 0.8
+  known_amp_min_coverage: 0.8
+  known_amp_mmseqs_command: [mmseqs]
+  known_amp_mmseqs_threads: 8
+
+optimization:
+  ranked_candidates: outputs/smoke_e2e/pareto_ranked_complete.parquet
+  initial_population: outputs/smoke_e2e/pareto_initial_10.csv
+  training_sequences: assets/training/amp_train_sequences.csv
+  promotion_gate: configs/smoke_scorer_gate_v1.json
+  scorer_root: models/safety
+  safety_ad_root: models/safety/ad
+  stability_model: models/stability_exploratory/stability_model.pkl
+  esm_model: external/models/facebook/esm2_t30_150M_UR50D
+  apex_root: external/apex
+  strain_groups: configs/apex_strain_groups.yaml
+  activity_scorer: apex
+  activity_thresholds: models/activity/apex_selected11_thresholds.json
+  activity_targets:
+    - E. coli ATCC11775
+    - P. aeruginosa PAO1
+    - P. aeruginosa PA14
+    - S. aureus ATCC12600
+    - E. coli AIG221
+    - E. coli AIG222
+    - K. pneumoniae ATCC13883
+    - A. baumannii ATCC19606
+    - S. aureus (ATCC BAA-1556) - MRSA
+    - vancomycin-resistant E. faecalis ATCC700802
+    - vancomycin-resistant E. faecium ATCC700221
+  activity_aggregation: median
+  activity_quantile: 0.5
+  activity_output_column: apex_pathogen_median_log10_mic
+  objectives:
+    - {column: apex_pathogen_median_log10_mic, direction: minimize}
+    - {column: toxicity_score, direction: minimize}
+    - {column: hemolysis_score, direction: minimize}
+  output_root: outputs/smoke_e2e/genetic_pareto
+  seeds: [4242]
+  generations: 1
+  population_size: 10
+  batch_size_apex: 100
+  batch_size_esm: 32
+  device: auto
+  protocol: smoke_e2e_real_inference_relaxed_gates_v1
+  mmseqs_command: [mmseqs]
+  mmseqs_threads: 8
+  cluster_max_members: 5
+  resume_generation: 1
+  apex_uncertainty_max: 0.2771194710771432
+  novelty_max_identity: 0.5
+  novelty_min_coverage: 0.8
+  enforce_safety_ad: false
+  enforce_apex_uncertainty: false
+  enforce_novelty: false
+  novelty_references: []
+  enforce_initial_edit_distance: true
+  max_initial_edit_fraction: 0.25
+  max_initial_edits: 3
+  same_anchor_crossover: true
+  max_offspring_attempts: 100
+  early_stopping_patience: 0
+  early_stopping_min_delta: 0.001
+  early_stopping_metric: hypervolume
+
+publication:
+  output_dir: outputs/smoke_e2e/final
+  apex_pathogen_root: external/apex-pathogen
+  hemopi2_root: external/hemopi2/official_zenodo_14676712/hemopi2
+  hemopi2_wrapper: scripts/run_hemopi2_fixed.py
+  toxinpred3_root: external/toxinpred3
+  toxinpred3_runner: scripts/score_toxinpred3_chunked.py
+  toxinpred3_python: "${AMP_TOXINPRED3_PYTHON}"
+  apex_pathogen_mic_max_um: 1000000000.0
+  toxinpred3_threshold: 2.0
+  hemopi2_threshold: 2.0
+  apex_pathogen_batch_size: 100
+  cluster_identity: 0.8
+  cluster_coverage: 0.8
+  max_representatives_per_cluster: 1
+  retain_all_ranks: true

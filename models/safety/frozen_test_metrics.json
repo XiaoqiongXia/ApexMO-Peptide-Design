@@ -1,0 +1,22 @@
+{
+  "hemolysis": {
+    "auprc": 0.8297630793889257,
+    "auroc": 0.830135211723747,
+    "n": 386,
+    "sensitivity": 0.9273743016759777,
+    "specificity": 0.33816425120772947,
+    "split": "independent",
+    "task": "hemolysis",
+    "threshold": 0.20631123051000427
+  },
+  "toxicity": {
+    "auprc": 0.9384484724290452,
+    "auroc": 0.9303481482942739,
+    "n": 2206,
+    "sensitivity": 0.9637023593466425,
+    "specificity": 0.5244565217391305,
+    "split": "test",
+    "task": "toxicity",
+    "threshold": 0.14204831361422585
+  }
+}

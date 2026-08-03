@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "all_scorers_promoted": true,
+  "smoke_test_only": true,
+  "tasks": {
+    "toxicity": {
+      "dehomologized_metrics": {
+        "threshold": 1.1
+      }
+    },
+    "hemolysis": {
+      "dehomologized_metrics": {
+        "threshold": 1.1
+      }
+    }
+  }
+}

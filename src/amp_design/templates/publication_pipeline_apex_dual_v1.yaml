@@ -1,0 +1,132 @@
+sampling_runs:
+  - checkpoint: models/generator/amp_flow_seed42_step3499.pt
+    output_root: outputs/publication_pipeline/sampling
+    training_seed: 42
+    lengths: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    samples_per_length: 1000
+    shard_size: 1000
+    steps: 256
+    batch_size: 512
+    device: auto
+  - checkpoint: models/generator/amp_flow_seed123_step3499.pt
+    output_root: outputs/publication_pipeline/sampling
+    training_seed: 123
+    lengths: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    samples_per_length: 1000
+    shard_size: 1000
+    steps: 256
+    batch_size: 512
+    device: auto
+  - checkpoint: models/generator/amp_flow_seed2025_step3499.pt
+    output_root: outputs/publication_pipeline/sampling
+    training_seed: 2025
+    lengths: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    samples_per_length: 1000
+    shard_size: 1000
+    steps: 256
+    batch_size: 512
+    device: auto
+
+pipeline:
+  sampling_manifests:
+    - outputs/publication_pipeline/sampling/manifests/seed_42.json
+    - outputs/publication_pipeline/sampling/manifests/seed_123.json
+    - outputs/publication_pipeline/sampling/manifests/seed_2025.json
+  prepared_candidates: outputs/publication_pipeline/prepared_candidates.parquet
+  scored_candidates: outputs/publication_pipeline/scored_candidates.parquet
+  finalized_dir: outputs/publication_pipeline/legacy_finalized_unused
+  hard_filter_dir: outputs/publication_pipeline/legacy_hard_filter_unused
+  run_sampling: true
+  scoring_chunk_size: 3000
+  mic_max_um: 128.0
+  require_safety_ad: true
+  require_apex_uncertainty: true
+  require_novelty: true
+  require_stability: true
+  stability_min_hours: 1.0
+  require_known_amp_novelty: true
+  known_amp_reference: assets/known_amp/known_amp_sequences.fasta
+  known_amp_max_identity: 0.8
+  known_amp_min_coverage: 0.8
+  known_amp_mmseqs_command: [mmseqs]
+  known_amp_mmseqs_threads: 16
+
+# The remainder starts from the newly created scored candidate table and initial
+# population; it does not rely on frozen precomputed pool files.
+
+optimization:
+  ranked_candidates: outputs/publication_pipeline/pareto_ranked_complete.parquet
+  initial_population: outputs/publication_pipeline/pareto_initial_500.csv
+  training_sequences: assets/training/amp_train_sequences.csv
+  promotion_gate: models/safety/scorer_promotion_gate_v1_3.json
+  scorer_root: models/safety
+  safety_ad_root: models/safety/ad
+  stability_model: models/stability_exploratory/stability_model.pkl
+  esm_model: external/models/facebook/esm2_t30_150M_UR50D
+  apex_root: external/apex
+  strain_groups: configs/apex_strain_groups.yaml
+  activity_scorer: apex
+  activity_thresholds: models/activity/apex_selected11_thresholds.json
+  activity_targets:
+    - E. coli ATCC11775
+    - P. aeruginosa PAO1
+    - P. aeruginosa PA14
+    - S. aureus ATCC12600
+    - E. coli AIG221
+    - E. coli AIG222
+    - K. pneumoniae ATCC13883
+    - A. baumannii ATCC19606
+    - S. aureus (ATCC BAA-1556) - MRSA
+    - vancomycin-resistant E. faecalis ATCC700802
+    - vancomycin-resistant E. faecium ATCC700221
+  activity_aggregation: median
+  activity_quantile: 0.5
+  activity_output_column: apex_pathogen_median_log10_mic
+  objectives:
+    - {column: apex_pathogen_median_log10_mic, direction: minimize}
+    - {column: toxicity_score, direction: minimize}
+    - {column: hemolysis_score, direction: minimize}
+  output_root: outputs/publication_pipeline/genetic_pareto
+  seeds: [42, 123, 2025, 271828, 314159]
+  generations: 25
+  population_size: 500
+  batch_size_apex: 3000
+  batch_size_esm: 32
+  device: auto
+  protocol: all_rank_dual_apex_external_safety_mmseqs80_v1
+  mmseqs_command: [mmseqs]
+  mmseqs_threads: 16
+  cluster_max_members: 5
+  resume_generation: 1
+  apex_uncertainty_max: 0.2771194710771432
+  novelty_max_identity: 0.5
+  novelty_min_coverage: 0.8
+  enforce_safety_ad: true
+  enforce_apex_uncertainty: true
+  enforce_novelty: true
+  enforce_initial_edit_distance: true
+  max_initial_edit_fraction: 0.25
+  max_initial_edits: 5
+  same_anchor_crossover: true
+  max_offspring_attempts: 100
+  early_stopping_patience: 5
+  early_stopping_min_delta: 0.001
+  early_stopping_metric: hypervolume
+  novelty_references: []
+
+publication:
+  output_dir: outputs/publication_pipeline/final
+  apex_pathogen_root: external/apex-pathogen
+  hemopi2_root: external/hemopi2/official_zenodo_14676712/hemopi2
+  hemopi2_wrapper: scripts/run_hemopi2_fixed.py
+  toxinpred3_root: external/toxinpred3
+  toxinpred3_runner: scripts/score_toxinpred3_chunked.py
+  toxinpred3_python: "${AMP_TOXINPRED3_PYTHON}"
+  apex_pathogen_mic_max_um: 128.0
+  toxinpred3_threshold: 0.38
+  hemopi2_threshold: 0.58
+  apex_pathogen_batch_size: 3000
+  cluster_identity: 0.8
+  cluster_coverage: 0.8
+  max_representatives_per_cluster: 1
+  retain_all_ranks: true

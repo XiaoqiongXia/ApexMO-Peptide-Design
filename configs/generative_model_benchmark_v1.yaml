@@ -1,0 +1,125 @@
+version: generative_model_benchmark_v1
+status: frozen_before_pilot
+scope:
+  task: unconditional_de_novo_amp_generation
+  included_models:
+    - flow_matching
+    - amp_diffusion
+    - arcadiamp
+  excluded_models:
+    omegamp: public dashboard lacks runnable inference code and checkpoint
+    apexgo: template-conditioned optimization, not unconditional generation
+    joker: template- and pattern-conditioned design, not unconditional generation
+
+sampling:
+  lengths: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+  sampling_seeds: [42, 123, 2025]
+  pilot_samples_per_seed_length: 20
+  formal_samples_per_seed_length: 500
+  pilot_shard_size: 20
+  formal_shard_size: 100
+  budget_unit: raw_generation_attempt
+  derived_seed_rule: sampling_seed * 1000000 + requested_length * 1000 + shard_id
+  retry_failed_samples: false
+  replace_invalid_or_duplicate_samples: false
+
+models:
+  flow_matching:
+    repository: .
+    environment: amp_flow
+    checkpoint: outputs/formal_sequence_seed123_gpu1_eager/checkpoints/top3/step_00003499_loss_1.264923.pt
+    checkpoint_sha256: 962853984d267716d71f651872f877e27a26bfa2c9d130a5baeb90a5092976c8
+    checkpoint_selection: lowest pre-existing deterministic validation CE across training seeds
+    training_seed: 123
+    use_ema: true
+    sampling_steps: 256
+    adapter: scripts/benchmark_generate_flow_matching.py
+  amp_diffusion:
+    repository: external/amp-diffusion
+    repository_commit: a59de9e95ef13d684d940025665c5783598367b9
+    environment: amp_diffusion_benchmark
+    checkpoint: external/amp-diffusion/note/model.pt
+    checkpoint_lfs_oid_sha256: 6a3f347df7c02ff6008ac3d2d4826daeadf7418cb6862a6599b4f710e1d7f8aa
+    checkpoint_expected_size_bytes: 132526179
+    sampling_steps: 1000
+    adapter: scripts/benchmark_generate_amp_diffusion.py
+  arcadiamp:
+    repository: external/ARCADIAMP
+    repository_commit: 70448c14a176399640a26095782e870b7204c338
+    environment: arcadiamp_benchmark
+    checkpoint: external/ARCADIAMP/GenerativeModel/models/trained_generative_model.tar
+    checkpoint_sha256: cda39e306e6b5dd983b54e3ff1cfea0847eb803a13e76089a4e492fdfd9ece3e
+    config: external/ARCADIAMP/GenerativeModel/config/config38M.json
+    config_sha256: 326803742390d6c66e30937902f8a7015d5737603e85e6c280ed033af4f88015
+    sampling_steps: 500
+    adapter: scripts/benchmark_generate_arcadiamp.py
+
+raw_schema:
+  required_columns:
+    - sample_id
+    - model
+    - checkpoint_sha256
+    - sampling_seed
+    - derived_seed
+    - requested_length
+    - shard_id
+    - sample_index
+    - sequence_raw
+    - sequence_canonical
+    - observed_length
+    - generation_status
+    - failure_reason
+    - runtime_seconds
+    - device
+    - sampling_parameters_json
+    - created_at
+  immutable_key: [model, checkpoint_sha256, sampling_seed, requested_length, shard_id, sample_index]
+
+novelty:
+  reference: union of all disclosed model training sequences and frozen known-AMP collection
+  primary_identity_threshold: 0.80
+  strict_identity_threshold: 0.50
+  search: short-peptide-sensitive MMseqs2 followed by global-alignment verification
+  identity_definition: exact aligned matches divided by global alignment length
+
+apex_pathogen:
+  repository: external/apex-pathogen
+  repository_commit: 417a4441a1e6ef8b10d2352e1c059622d5259f3a
+  license: MIT
+  ensemble_models: 8
+  pathogen_count: 11
+  primary_activity: median pathogen log10(MIC)
+  threshold_contract: outputs/apex_pathogen_known_amp_benchmark_v1/thresholds.json
+  predicted_active_threshold: 2.4281704039353142
+  stringent_top10_threshold: 1.6237517688016188
+  uncertainty_threshold: 0.35883064907437795
+
+endpoints:
+  primary: unique novel predicted-active uncertainty-feasible candidates per 1000 raw attempts
+  secondary:
+    - stringent predicted-active yield
+    - per-pathogen MIC profile
+    - exact validity and length compliance
+    - uniqueness and identity clustering
+    - k-mer and ESM2 embedding diversity
+    - physicochemical and aggregation propensity
+    - generation throughput and peak GPU memory
+  exploratory:
+    - hemolysis prediction pending independent model audit
+    - mammalian cytotoxicity prediction pending independent model audit
+
+statistics:
+  unit: model x sampling_seed x requested_length
+  bootstrap_hierarchy: [sampling_seed, requested_length, sequence]
+  confidence_interval: 0.95
+  comparisons: paired by sampling_seed and requested_length
+  report_effect_sizes: true
+  composite_rank: false
+
+outputs:
+  root: outputs/generative_model_benchmark_v1
+  pilot_subdirectory: pilot
+  formal_subdirectory: formal
+  raw_data_are_immutable: true
+  figure_formats: [pdf, svg, png]
+  figure_dpi: 300

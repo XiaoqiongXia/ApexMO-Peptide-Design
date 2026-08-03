@@ -1,0 +1,67 @@
+sampling:
+  checkpoint: models/generator/amp_flow_seed42_step3499.pt
+  output_root: outputs/pipeline/sampling
+  training_seed: 42
+  lengths: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+  samples_per_length: 1000
+  shard_size: 1000
+  steps: 256
+  batch_size: 512
+  device: auto
+
+pipeline:
+  sampling_manifests: [outputs/pipeline/sampling/manifests/seed_42.json]
+  prepared_candidates: outputs/pipeline/prepared_candidates.parquet
+  scored_candidates: outputs/pipeline/scored_candidates.parquet
+  finalized_dir: outputs/pipeline/finalized
+  hard_filter_dir: outputs/pipeline/final_candidates
+  run_sampling: true
+  scoring_chunk_size: 3000
+  mic_max_um: 128.0
+  activity_hard_threshold: null
+  activity_hard_direction: minimize
+  require_safety_ad: true
+  require_apex_uncertainty: true
+  require_novelty: true
+  require_stability: true
+  stability_min_hours: 1.0
+
+optimization:
+  ranked_candidates: outputs/pipeline/pareto_ranked_candidates.parquet
+  initial_population: outputs/pipeline/pareto_initial_population.csv
+  training_sequences: assets/training/amp_train_sequences.csv
+  promotion_gate: models/safety/scorer_promotion_gate_v1_3.json
+  scorer_root: models/safety
+  safety_ad_root: models/safety/ad
+  stability_model: models/stability_exploratory/stability_model.pkl
+  esm_model: external/models/facebook/esm2_t30_150M_UR50D
+  apex_root: external/apex-pathogen
+  activity_scorer: apex_pathogen
+  activity_thresholds: models/activity/apex_pathogen_thresholds.json
+  output_root: outputs/pipeline/genetic_pareto
+  seeds: [42, 123, 2025]
+  generations: 100
+  population_size: 500
+  batch_size_apex: 3000
+  batch_size_esm: 32
+  device: cuda:0
+  protocol: three_objective_apex_pathogen_portable_ad_uncertainty_novelty_v2
+  mmseqs_command: [mmseqs]
+  mmseqs_threads: 16
+  cluster_max_members: 5
+  resume_generation: 1
+  apex_uncertainty_max: 0.35883064907437795
+  novelty_max_identity: 0.5
+  novelty_min_coverage: 0.8
+  enforce_safety_ad: true
+  enforce_apex_uncertainty: true
+  enforce_novelty: true
+  enforce_initial_edit_distance: false
+  max_initial_edit_fraction: 0.25
+  max_initial_edits: 5
+  same_anchor_crossover: true
+  max_offspring_attempts: 20
+  early_stopping_patience: 0
+  early_stopping_min_delta: 0.001
+  early_stopping_metric: hypervolume
+  novelty_references: []

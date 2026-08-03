@@ -1,0 +1,10 @@
+sampling:
+  checkpoint: models/generator/amp_flow_seed42_step3499.pt
+  output_root: outputs/sampling_v1_3
+  training_seed: 42
+  lengths: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+  samples_per_length: 1000
+  shard_size: 1000
+  steps: 256
+  batch_size: 512
+  device: auto

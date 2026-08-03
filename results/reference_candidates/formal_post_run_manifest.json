@@ -1,0 +1,39 @@
+{
+  "activity_scorer": "apex_pathogen",
+  "code_sha256": {
+    "./src/amp_design/pareto_finalization.py": "7d43a759087fd7bf6250f19cec732f1bdf9964b1232994688221f7f4c6c90d0e",
+    "./src/amp_design/release_pipeline.py": "faca89a77ee60d9f99d9d4e02f08356eebb6f3fa64d884273a564e3e98053e8b"
+  },
+  "combined_rank0": 232,
+  "combined_unique": 193335,
+  "created_at": "2026-07-29T19:31:33.663919+00:00",
+  "diverse_rank0": 218,
+  "evaluation_cache_sha256": {
+    "./outputs/genetic_pareto_apex_pathogen_v2/seed_123/evaluation_cache.parquet": "0304d62c49aad3f787738bdb10edcb1f988518e2172e68f835a881c970452f7c",
+    "./outputs/genetic_pareto_apex_pathogen_v2/seed_2025/evaluation_cache.parquet": "7897ec5bf78598ad0c9183fab038e1d148a59d2f0da66bbd621787cf7c2464e3",
+    "./outputs/genetic_pareto_apex_pathogen_v2/seed_42/evaluation_cache.parquet": "e29bb836ae1e795973d141ac7ef1bfa7d2f132027ee009fde55badcef6e24c36"
+  },
+  "evaluation_caches": [
+    "./outputs/genetic_pareto_apex_pathogen_v2/seed_42/evaluation_cache.parquet",
+    "./outputs/genetic_pareto_apex_pathogen_v2/seed_123/evaluation_cache.parquet",
+    "./outputs/genetic_pareto_apex_pathogen_v2/seed_2025/evaluation_cache.parquet"
+  ],
+  "original": "./outputs/pareto_offline_apex_pathogen_v2/pareto_ranked_complete.csv",
+  "original_sha256": "26360272fa8ca77a40c7daf8f8f7cf9441deea6b229d07dda9c1fe3b9e9e913c",
+  "outputs": {
+    "combined_archive_ranked.parquet": "b84111d0804bce0e4f108ca845b8db0e334f794110055e0c433b4fb5bf94ef71",
+    "combined_rank0_diverse.csv": "52cf93f17a87caa581ba7b85c9876605f62ee6a08856840307e1221e4a4403f7",
+    "combined_rank0_front.csv": "5046664356363700e7bc0f84dd2f50d249961126f01f4d9177a1aacfcb2953a2"
+  },
+  "schema_version": 1,
+  "score_tolerances": {
+    "apex_pathogen_median_log10_mic": 0.0005,
+    "hemolysis_score": 1e-08,
+    "toxicity_score": 1e-08
+  },
+  "seeds": [
+    42,
+    123,
+    2025
+  ]
+}

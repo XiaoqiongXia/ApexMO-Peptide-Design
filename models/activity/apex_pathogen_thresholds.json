@@ -1,0 +1,16 @@
+{
+  "activity_rule": "apex_pathogen_median_log10_mic < predicted_active_threshold_median_log10_mic",
+  "activity_scorer": "apex_pathogen",
+  "n_ensemble_models": 8,
+  "n_input_sequences": 16860,
+  "n_pathogens": 11,
+  "n_scored_sequences": 16740,
+  "predicted_active_threshold_median_log10_mic": 2.4281704039353142,
+  "reference_input": "data/processed/amp_flow_training_sequences_active_prior.csv",
+  "repository_commit": "417a4441a1e6ef8b10d2352e1c059622d5259f3a",
+  "schema_version": 1,
+  "stringent_activity_rule": "apex_pathogen_median_log10_mic < stringent_activity_threshold_q10_log10_mic",
+  "stringent_activity_threshold_q10_log10_mic": 1.6237517688016188,
+  "uncertainty_rule": "apex_median_log10_mic_sd <= uncertainty_threshold_q95_log10_mic_sd",
+  "uncertainty_threshold_q95_log10_mic_sd": 0.35883064907437795
+}

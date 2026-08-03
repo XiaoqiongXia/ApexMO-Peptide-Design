@@ -1,0 +1,240 @@
+{
+  "hemolysis": {
+    "formal_gate_candidate": false,
+    "modal_main_setting": {
+      "C": 0.01,
+      "class_weight": null
+    },
+    "n": 1540,
+    "seeds": [
+      {
+        "auprc": 0.6946607018084142,
+        "auroc": 0.7657428893231286,
+        "fold_choices": [
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 0
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 1
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 2
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 3
+          },
+          {
+            "C": 0.01,
+            "class_weight": "balanced",
+            "fold": 4
+          }
+        ],
+        "n": 1540,
+        "seed": 42,
+        "sensitivity": 0.9508426966292135,
+        "specificity": 0.30917874396135264,
+        "threshold": 0.20631123051000427
+      },
+      {
+        "auprc": 0.7071665601314604,
+        "auroc": 0.7709571595288498,
+        "fold_choices": [
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 0
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 1
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 2
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 3
+          },
+          {
+            "C": 0.01,
+            "class_weight": "balanced",
+            "fold": 4
+          }
+        ],
+        "n": 1540,
+        "seed": 123,
+        "sensitivity": 0.9508426966292135,
+        "specificity": 0.2632850241545894,
+        "threshold": 0.18267081510312116
+      },
+      {
+        "auprc": 0.6916117104163799,
+        "auroc": 0.7630628155023611,
+        "fold_choices": [
+          {
+            "C": 0.01,
+            "class_weight": "balanced",
+            "fold": 0
+          },
+          {
+            "C": 0.001,
+            "class_weight": "balanced",
+            "fold": 1
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 2
+          },
+          {
+            "C": 0.01,
+            "class_weight": "balanced",
+            "fold": 3
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 4
+          }
+        ],
+        "n": 1540,
+        "seed": 2025,
+        "sensitivity": 0.9508426966292135,
+        "specificity": 0.2898550724637681,
+        "threshold": 0.20694606907280838
+      }
+    ],
+    "task": "hemolysis"
+  },
+  "toxicity": {
+    "formal_gate_candidate": true,
+    "modal_main_setting": {
+      "C": 0.01,
+      "class_weight": null
+    },
+    "n": 8825,
+    "seeds": [
+      {
+        "auprc": 0.9222429713667365,
+        "auroc": 0.9121745005201294,
+        "fold_choices": [
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 0
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 1
+          },
+          {
+            "C": 0.1,
+            "class_weight": null,
+            "fold": 2
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 3
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 4
+          }
+        ],
+        "n": 8825,
+        "seed": 42,
+        "sensitivity": 0.9501246882793017,
+        "specificity": 0.5199365654734934,
+        "threshold": 0.14204831361422585
+      },
+      {
+        "auprc": 0.9221382673742398,
+        "auroc": 0.9122930922888438,
+        "fold_choices": [
+          {
+            "C": 0.1,
+            "class_weight": null,
+            "fold": 0
+          },
+          {
+            "C": 0.1,
+            "class_weight": null,
+            "fold": 1
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 2
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 3
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 4
+          }
+        ],
+        "n": 8825,
+        "seed": 123,
+        "sensitivity": 0.9501246882793017,
+        "specificity": 0.5346624376982329,
+        "threshold": 0.1418922079034725
+      },
+      {
+        "auprc": 0.9205317604235499,
+        "auroc": 0.9102512491683425,
+        "fold_choices": [
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 0
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 1
+          },
+          {
+            "C": 0.01,
+            "class_weight": null,
+            "fold": 2
+          },
+          {
+            "C": 0.1,
+            "class_weight": null,
+            "fold": 3
+          },
+          {
+            "C": 0.1,
+            "class_weight": null,
+            "fold": 4
+          }
+        ],
+        "n": 8825,
+        "seed": 2025,
+        "sensitivity": 0.9501246882793017,
+        "specificity": 0.49546896239238786,
+        "threshold": 0.1277579404234786
+      }
+    ],
+    "task": "toxicity"
+  }
+}

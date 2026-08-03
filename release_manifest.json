@@ -1,0 +1,620 @@
+{
+  "bundled_files": {
+    ".gitattributes": {
+      "git_lfs": false,
+      "sha256": "89f8f36a4a653a0bdd9c443d66ad6782f57b5dc673026179dd12b05779fd774b",
+      "size_bytes": 276
+    },
+    ".github/workflows/ci.yml": {
+      "git_lfs": false,
+      "sha256": "c1bbae067acf19f3d23e347b6da67602aa9ec621f1277a03ca171847e6ae2cad",
+      "size_bytes": 967
+    },
+    ".gitignore": {
+      "git_lfs": false,
+      "sha256": "e84892d9064e4cd13ce1ed7a168c76139c6708471da8efbb0388ab84f7b5fcbb",
+      "size_bytes": 224
+    },
+    "LICENSE_PENDING.md": {
+      "git_lfs": false,
+      "sha256": "9f58d9bbf2f3df19c73db85e79ab5585cb8b3d85a29d02935a35a5e2a6f23d37",
+      "size_bytes": 665
+    },
+    "MANIFEST.in": {
+      "git_lfs": false,
+      "sha256": "64ea5bc7109df5878051ab16319e1b91c1acdf878a2d457a68aca398249b5599",
+      "size_bytes": 237
+    },
+    "MODEL_CARD.md": {
+      "git_lfs": false,
+      "sha256": "58e9ff9d747c271d91647558e90e7efc2cfd9d7e7c75d1713eed9c87a80c8771",
+      "size_bytes": 3303
+    },
+    "README.md": {
+      "git_lfs": false,
+      "sha256": "c732e3f6cbbe52cff293e106656222d47e1472bc739654ec6f16cc738d812d59",
+      "size_bytes": 7874
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "git_lfs": false,
+      "sha256": "c95d43f55eb2aa4439029b6acf8d2e83b1248c7bda882ec6becb23f1e77be453",
+      "size_bytes": 1820
+    },
+    "assets/known_amp/known_amp_sequences.fasta": {
+      "git_lfs": false,
+      "sha256": "9ff7369ac3f6c3e7d9559bd455df8f5900e3062f5250828f76b1ae799aead07a",
+      "size_bytes": 626861
+    },
+    "assets/pareto/pareto_diverse_500.csv": {
+      "git_lfs": true,
+      "sha256": "dc1bedec66731e204e0416e41e3ae0a293d6bdc26ee282ef9ebe2dd99627849d",
+      "size_bytes": 583766
+    },
+    "assets/pareto/pareto_ranked_complete.parquet": {
+      "git_lfs": true,
+      "sha256": "f404dfc7c46d590cb9e64c0e1a2cdeec7229350957a9b511e4047b28db84d5a3",
+      "size_bytes": 23714632
+    },
+    "assets/training/amp_train_sequences.csv": {
+      "git_lfs": false,
+      "sha256": "0a913c52f3f98a677d7e4ed579ec2474da75738769175ccdb749d9a0efd984f5",
+      "size_bytes": 272536
+    },
+    "configs/apex_strain_groups.yaml": {
+      "git_lfs": false,
+      "sha256": "d10dae1296f7eb00c6e48d1e4ee0d6157e8806d92794dc91acd8421347073b79",
+      "size_bytes": 1051
+    },
+    "configs/generative_model_benchmark_v1.yaml": {
+      "git_lfs": false,
+      "sha256": "bbfbfee6942a5266cb792ed057b751bf688a443518aaa418568e8e8279203482",
+      "size_bytes": 4660
+    },
+    "configs/optimization.yaml": {
+      "git_lfs": false,
+      "sha256": "8b7dd8876d0e1d97b19520ec205164cf73063baf5f3d3417ea14b86c7cbef4c6",
+      "size_bytes": 1323
+    },
+    "configs/pipeline.yaml": {
+      "git_lfs": false,
+      "sha256": "1ed0e81805d10a2808dccb96cace4081dcf6375c77651b5d74bc7440a64705c1",
+      "size_bytes": 4543
+    },
+    "configs/sampling.yaml": {
+      "git_lfs": false,
+      "sha256": "383e1edd148735d163bf2df48b1f4ccdf69ab8f86555c34bfc14f2a82f868d0b",
+      "size_bytes": 274
+    },
+    "configs/smoke_e2e.yaml": {
+      "git_lfs": false,
+      "sha256": "210599cd11ac20641ab151f5408140cbdd0052f5f54c820082fc43d6ebe38a04",
+      "size_bytes": 4525
+    },
+    "configs/smoke_scorer_gate_v1.json": {
+      "git_lfs": false,
+      "sha256": "659db473e4ec605b92220caabc61fc96716e131204049e67e9c18e5b7f0cb3c8",
+      "size_bytes": 285
+    },
+    "configs/train.yaml": {
+      "git_lfs": false,
+      "sha256": "76a6a68cbc5d7a170cabd2fceb7fc8c10a7fbf0e52631ac84a77ad7686e6d37e",
+      "size_bytes": 926
+    },
+    "docs/github_release_end_to_end_pipeline_remediation_2026-07-28.md": {
+      "git_lfs": false,
+      "sha256": "a39f69cd5f5338d93b30687901b0628d6345dfd968998ea65b131e3c8b5c736f",
+      "size_bytes": 4178
+    },
+    "docs/pipeline_rerun_execution_report_2026-07-28.md": {
+      "git_lfs": false,
+      "sha256": "a981f1b4f19e9e546b5c7d3e1e03edd2270032c4a3c24399d6d41befa2a0ef4a",
+      "size_bytes": 6389
+    },
+    "docs/release_code_package_v1_3.md": {
+      "git_lfs": false,
+      "sha256": "5c3844ce4df214b76bef0cbbd957d31a304bb58b5d8ffe2b8a4ebbc85995e3d0",
+      "size_bytes": 7876
+    },
+    "environment-toxinpred3.yml": {
+      "git_lfs": false,
+      "sha256": "73c4575732ed2ab908f7fa98a373b1c4ac1ccfa36fbc087512a2d28af5ec5431",
+      "size_bytes": 150
+    },
+    "environment.yml": {
+      "git_lfs": false,
+      "sha256": "2de66e030d8037a97f2deff744d0ae2ea098214b965a7be2cb5b8f3f35a5aaa9",
+      "size_bytes": 144
+    },
+    "models/MODEL_MANIFEST.json": {
+      "git_lfs": false,
+      "sha256": "df9c520a5e6076eaa3dd4415ea3fb7d28c16edf3564ead18e34506a04c4574d0",
+      "size_bytes": 4882
+    },
+    "models/activity/apex_pathogen_thresholds.json": {
+      "git_lfs": false,
+      "sha256": "ffaaa25d509dc562e7a6318adcd3f35443cbace35b6453b77b95797622590e19",
+      "size_bytes": 824
+    },
+    "models/activity/apex_selected11_thresholds.json": {
+      "git_lfs": false,
+      "sha256": "904dadc77da92f59120167f32c589c7de75a2de4d0d9d8cb860271f82c522e20",
+      "size_bytes": 1293
+    },
+    "models/generator/amp_flow_seed123_step3499.pt": {
+      "git_lfs": true,
+      "sha256": "962853984d267716d71f651872f877e27a26bfa2c9d130a5baeb90a5092976c8",
+      "size_bytes": 118678945
+    },
+    "models/generator/amp_flow_seed2025_step3499.pt": {
+      "git_lfs": true,
+      "sha256": "0db7152d8720800da936ca0396fc49594a7dd02e1fd99b44382c74df1f2f624f",
+      "size_bytes": 118678881
+    },
+    "models/generator/amp_flow_seed42_step3499.pt": {
+      "git_lfs": true,
+      "sha256": "5de3ab10f7d5b26d00aa9be46340ad16aad6d7ea42c7a65c1619aba82c81ec6a",
+      "size_bytes": 118678945
+    },
+    "models/safety/ad/hemolysis_esm_reference.npz": {
+      "git_lfs": true,
+      "sha256": "aff23e5944761bb209ed1e4b86e73db15a371377590e523f3ba9679b215cca89",
+      "size_bytes": 3724523
+    },
+    "models/safety/ad/safety_ad_config.json": {
+      "git_lfs": false,
+      "sha256": "d49fa98094267096bb89e9c6685180d1dbb97432a58f195878a37f6f78768d78",
+      "size_bytes": 571
+    },
+    "models/safety/ad/toxicity_esm_reference.npz": {
+      "git_lfs": true,
+      "sha256": "8fda1c9b62a79f1045a9107ac8f76bac6bf249c1fb71f4e2f5e24a19dbe4a495",
+      "size_bytes": 21313153
+    },
+    "models/safety/frozen_test_metrics.json": {
+      "git_lfs": false,
+      "sha256": "8a3b21f8774f5da44bb4343ecc34012abb4cb12de608773d03c7dc9640b98b4a",
+      "size_bytes": 535
+    },
+    "models/safety/hemolysis_model.pkl": {
+      "git_lfs": false,
+      "sha256": "4414abb474f9d32d54b0953a06b9f32739ab6397a588c5b91e2c87d1ffe93eae",
+      "size_bytes": 21614
+    },
+    "models/safety/pretrain_manifest.json": {
+      "git_lfs": false,
+      "sha256": "bd0b6bf0134fe6500865d89da4026511ba8676a022fb90b3a2dfd6fe57209dd5",
+      "size_bytes": 682
+    },
+    "models/safety/scorer_promotion_gate_v1_3.json": {
+      "git_lfs": false,
+      "sha256": "c5ad44f978b78ac0fb8c30e4da5ed2a1f5e73513be45c16042fe1bee98fab5c7",
+      "size_bytes": 3769
+    },
+    "models/safety/toxicity_model.pkl": {
+      "git_lfs": false,
+      "sha256": "c6585c75de74932819eae679d83ec45b39013c4bd3b1f3a0a6199c313f45c91e",
+      "size_bytes": 21614
+    },
+    "models/safety/training_metrics.json": {
+      "git_lfs": false,
+      "sha256": "8ecefb28fc90c87a90236951a56bb3175096c5c4a2eb62b7d65b035897af6495",
+      "size_bytes": 5304
+    },
+    "models/stability_exploratory/stability_model.pkl": {
+      "git_lfs": false,
+      "sha256": "333bf013eba1daf233ad9442ed26a539ff72a08dc29a24495b214301f002c9f8",
+      "size_bytes": 18800
+    },
+    "pyproject.toml": {
+      "git_lfs": false,
+      "sha256": "0beb6fd6b2eaa9874cbef5f56d5b8214e46116bdcb5e8a772877391903ba5c84",
+      "size_bytes": 1488
+    },
+    "results/reference_candidates/combined_rank0_diverse.csv": {
+      "git_lfs": false,
+      "sha256": "52cf93f17a87caa581ba7b85c9876605f62ee6a08856840307e1221e4a4403f7",
+      "size_bytes": 237611
+    },
+    "results/reference_candidates/combined_rank0_front.csv": {
+      "git_lfs": false,
+      "sha256": "5046664356363700e7bc0f84dd2f50d249961126f01f4d9177a1aacfcb2953a2",
+      "size_bytes": 237704
+    },
+    "results/reference_candidates/formal_post_run_manifest.json": {
+      "git_lfs": false,
+      "sha256": "c59ae3d3f14821e987adf5d2a731e883b9566e123fc7e1ab827fc7fdd39e1de3",
+      "size_bytes": 1890
+    },
+    "scripts/bootstrap.sh": {
+      "git_lfs": false,
+      "sha256": "f96cfbfd1d1f09d11ad73b2df86a2f042fa9159039992f18aa65bd3edd094d52",
+      "size_bytes": 2912
+    },
+    "scripts/check_external_safety_installation.py": {
+      "git_lfs": false,
+      "sha256": "d8fbae95b9f2c658a946ddf1a152b5a651909eb836e35dd20e2cbbd7ecd883a1",
+      "size_bytes": 1876
+    },
+    "scripts/check_release_installation.py": {
+      "git_lfs": false,
+      "sha256": "475b5dd8efddd81333043e000e7aafbb937b775b41ecd60aa6e61705395b54ca",
+      "size_bytes": 1364
+    },
+    "scripts/check_sampling_inference.py": {
+      "git_lfs": false,
+      "sha256": "686d66d77172949286b51f027f4114df4355a7ad95bba13b7851b5b514386ad3",
+      "size_bytes": 1797
+    },
+    "scripts/run_full_pipeline.sh": {
+      "git_lfs": false,
+      "sha256": "150da88a8aa5214b9c70f462a170fbc497c54180adf4a55c737e2a1a001e13fb",
+      "size_bytes": 827
+    },
+    "scripts/run_hemopi2_fixed.py": {
+      "git_lfs": false,
+      "sha256": "9e43af9284fb85cefc70b78779d2bf6dc411326fe6da3175c78728402860c83c",
+      "size_bytes": 3381
+    },
+    "scripts/run_smoke_test.sh": {
+      "git_lfs": false,
+      "sha256": "c9db23cf3eecb59577fb18ff66bc70ba9c22f23a0c332dc02f91579c4dc07977",
+      "size_bytes": 2585
+    },
+    "scripts/score_toxinpred3_chunked.py": {
+      "git_lfs": false,
+      "sha256": "2d39910c1fa8bed2e663134db9859684a6086c02fa618493959253fed24ec9ba",
+      "size_bytes": 3926
+    },
+    "scripts/setup_external_assets.sh": {
+      "git_lfs": false,
+      "sha256": "ce412139a47b491b4045005d72699ef70ccc9ec13db8dcd12558859a606e8445",
+      "size_bytes": 3579
+    },
+    "scripts/verify_release_assets.py": {
+      "git_lfs": false,
+      "sha256": "68532fb156d7bb9f1b6f9b1daac351cfebe96648e1947baecf7957e5aca3ff14",
+      "size_bytes": 1457
+    },
+    "src/amp_design/__init__.py": {
+      "git_lfs": false,
+      "sha256": "720bc996447f66581785c0ac3be44584ff04950cfe4e4a76ffe24b577fb42acf",
+      "size_bytes": 106
+    },
+    "src/amp_design/activity_scoring.py": {
+      "git_lfs": false,
+      "sha256": "cfe0d62c0dc8457513c906008a4156854e812dc8beb7bd568347372855707af5",
+      "size_bytes": 7862
+    },
+    "src/amp_design/apex.py": {
+      "git_lfs": false,
+      "sha256": "451aa5668834c9856f13a6f69a1af696a68eb9a18793408d17337945b8e98eb2",
+      "size_bytes": 17729
+    },
+    "src/amp_design/apex_pathogen.py": {
+      "git_lfs": false,
+      "sha256": "7d38dd1bf39e003877c8e12ac7af5d86b234ed25a1c72bc09fe25c7553ae9031",
+      "size_bytes": 13603
+    },
+    "src/amp_design/benchmark.py": {
+      "git_lfs": false,
+      "sha256": "070e8ac8683e860a9b4681ed126418244dc3c79905cdac496d0ddaddb236ef87",
+      "size_bytes": 11498
+    },
+    "src/amp_design/benchmark_summary.py": {
+      "git_lfs": false,
+      "sha256": "58f70617101fcfe0a09917c430f57349f7658e35b3efe87ccf78a302e88fe60b",
+      "size_bytes": 790
+    },
+    "src/amp_design/data.py": {
+      "git_lfs": false,
+      "sha256": "8f1ccef4f22067ce651780014dfeac82bb4ffddbbb6d54d4caa82be3257dfd2a",
+      "size_bytes": 21949
+    },
+    "src/amp_design/evaluate.py": {
+      "git_lfs": false,
+      "sha256": "fd6b6e85c77c9cd981c9e632223384ccd82c70de8256b36a470a04e92e13cb6c",
+      "size_bytes": 9805
+    },
+    "src/amp_design/external_safety.py": {
+      "git_lfs": false,
+      "sha256": "f724c89408a753be7eb10cf7bcba9650176d75122a6910ccdeffb001d4ebdf0d",
+      "size_bytes": 4935
+    },
+    "src/amp_design/flow_matching.py": {
+      "git_lfs": false,
+      "sha256": "ea465a5363d6b728f75a529d7a214ecc7001558f588d0e0bf42f2bbd34abfd90",
+      "size_bytes": 6507
+    },
+    "src/amp_design/generate.py": {
+      "git_lfs": false,
+      "sha256": "68d26a3f235703a09e3d33061f8374840075018ff35e3b42033763bc16417cb6",
+      "size_bytes": 6223
+    },
+    "src/amp_design/genetic_pareto.py": {
+      "git_lfs": false,
+      "sha256": "7f76d6f060dad6bf738397eb65b5a34684b3c6d410dd2dfed8e09235044d13a5",
+      "size_bytes": 19243
+    },
+    "src/amp_design/model.py": {
+      "git_lfs": false,
+      "sha256": "c365ffb12fdea086f8433395c8060862e47fb8a57ae768a2b1b3e4ce02e76874",
+      "size_bytes": 8557
+    },
+    "src/amp_design/objectives.py": {
+      "git_lfs": false,
+      "sha256": "419cf48087319432c9142e8b8c6618765c3d356ecf4bf3abd4fe70b549eef162",
+      "size_bytes": 2478
+    },
+    "src/amp_design/pareto.py": {
+      "git_lfs": false,
+      "sha256": "6994b16c904ad6dc01bcf5cd5f07a5a567a3749f2b0d328dbf163c35a33d04a0",
+      "size_bytes": 5813
+    },
+    "src/amp_design/pareto_finalization.py": {
+      "git_lfs": false,
+      "sha256": "22586709fe9aa2dc583778aed0d309dc5502c23ebaeefb9299ff7dbef7bd5018",
+      "size_bytes": 9873
+    },
+    "src/amp_design/production_sampling.py": {
+      "git_lfs": false,
+      "sha256": "62ca873dacc65853563aa2f16e4c42157e82fb0323239a91a2ffe5771fdc9856",
+      "size_bytes": 9319
+    },
+    "src/amp_design/promotion.py": {
+      "git_lfs": false,
+      "sha256": "8296225298fee0a85a99bff846bdb4a18215298122994f10c9959fc53e45f4b8",
+      "size_bytes": 2415
+    },
+    "src/amp_design/publication_pipeline.py": {
+      "git_lfs": false,
+      "sha256": "974021cc0c9ab7f98684f3dc42d18ac24fb990aaf9dd506870208064fe2fdce3",
+      "size_bytes": 17602
+    },
+    "src/amp_design/release_cli.py": {
+      "git_lfs": false,
+      "sha256": "e5a196d9b565d8ee8306f5a5df0242e808959ff47bf986ae11a11bdae0e6722b",
+      "size_bytes": 13971
+    },
+    "src/amp_design/release_config.py": {
+      "git_lfs": false,
+      "sha256": "8f11acca320a94f8e992bf8b6ff5c5a3158932a68e1edffa03a2a351f44df2f4",
+      "size_bytes": 28553
+    },
+    "src/amp_design/release_optimization.py": {
+      "git_lfs": false,
+      "sha256": "369eb1d15379766b2c94c44e427853cade2152bdf112c1b15bcfb30788067e8b",
+      "size_bytes": 58856
+    },
+    "src/amp_design/release_pipeline.py": {
+      "git_lfs": false,
+      "sha256": "89206beb69a1cb50e2f6807119adbd962c2f4a1b829cf934d6f7d3294c19fb27",
+      "size_bytes": 28522
+    },
+    "src/amp_design/samplers.py": {
+      "git_lfs": false,
+      "sha256": "0c2100b3fcc2921b3cc5186b0a8b1c8c57723b51833cbb86c4c97bf6793a95e4",
+      "size_bytes": 4019
+    },
+    "src/amp_design/templates/publication_pipeline_apex_dual_v1.yaml": {
+      "git_lfs": false,
+      "sha256": "b1883c64095127b09337fbea504db170e2680f2842b9931688782a315af9e66d",
+      "size_bytes": 4883
+    },
+    "src/amp_design/templates/release_optimization_v1_3.yaml": {
+      "git_lfs": false,
+      "sha256": "d71dc1993d021bc2ccd249e1749eecf8fdaad9128295c20d5bcae2c4d4d0c026",
+      "size_bytes": 1723
+    },
+    "src/amp_design/templates/release_pipeline_v1_3.yaml": {
+      "git_lfs": false,
+      "sha256": "e09eb696eabbadbd055f18badbc963aa7ef525e36bbdb0ebb661c498cf6f9296",
+      "size_bytes": 2284
+    },
+    "src/amp_design/templates/release_sampling_v1_3.yaml": {
+      "git_lfs": false,
+      "sha256": "383e1edd148735d163bf2df48b1f4ccdf69ab8f86555c34bfc14f2a82f868d0b",
+      "size_bytes": 274
+    },
+    "src/amp_design/tokenizer.py": {
+      "git_lfs": false,
+      "sha256": "a4a21ef2aa6accf6627a21f041cb393d369c08dc926bea8c0eb847aef888363e",
+      "size_bytes": 3653
+    },
+    "src/amp_design/tracking.py": {
+      "git_lfs": false,
+      "sha256": "6ff9c2ab287edc5ce7c1aca1fa1d14064abb8075e49624b9fa90afffb55926df",
+      "size_bytes": 4211
+    },
+    "src/amp_design/training.py": {
+      "git_lfs": false,
+      "sha256": "fe38589a67aa7ec203632c01d495a480a514ac38fde2f79806dd266e37b512fc",
+      "size_bytes": 20702
+    },
+    "tests/test_activity_scoring.py": {
+      "git_lfs": false,
+      "sha256": "ae167d305f748c2a2aeadd768c708fe3eb082fbbb2afae9522aa0f16d63b5a2a",
+      "size_bytes": 5375
+    },
+    "tests/test_apex.py": {
+      "git_lfs": false,
+      "sha256": "fde0fc405e12dca2a8fc994ea911c8a13582768877a34a50e6a92042c69a0d51",
+      "size_bytes": 3520
+    },
+    "tests/test_apex_pathogen.py": {
+      "git_lfs": false,
+      "sha256": "602bdfe31765b58419aa32fe0949349aa5e80ba70022ef06296e219fb736ebae",
+      "size_bytes": 2211
+    },
+    "tests/test_benchmark.py": {
+      "git_lfs": false,
+      "sha256": "3e0d5144d1cc3aae188b18315d1f91df4a402b54f808dfbce0cfcb7910be4032",
+      "size_bytes": 2466
+    },
+    "tests/test_benchmark_summary.py": {
+      "git_lfs": false,
+      "sha256": "a2222b578ada89a6f55589e9b4d16bf299d4ab57cbedb531b28f6d2f27722cda",
+      "size_bytes": 637
+    },
+    "tests/test_data.py": {
+      "git_lfs": false,
+      "sha256": "589f12d22dbbfb4a03a24f59f54efddfa6eee4ddc6c2b97812d39ad034993977",
+      "size_bytes": 2950
+    },
+    "tests/test_evaluate.py": {
+      "git_lfs": false,
+      "sha256": "427c52a45c1cb9a6220018cb02ca4b0632de626cd2a418033ad463d7754b7ffc",
+      "size_bytes": 2222
+    },
+    "tests/test_flow_matching.py": {
+      "git_lfs": false,
+      "sha256": "b6d70f12ce3358dd01f875b1a020574a2e0b045549e25fbc22b116ed4fbc33fd",
+      "size_bytes": 3172
+    },
+    "tests/test_generate.py": {
+      "git_lfs": false,
+      "sha256": "5302e15ec14e2577fb0aa9f1ac4a3f41c6026a52e56aea2152dca4d6bd943cf8",
+      "size_bytes": 920
+    },
+    "tests/test_genetic_pareto_nsga2_v1_1.py": {
+      "git_lfs": false,
+      "sha256": "69c3c21d8ff052e41faa006b5ea339a0c0baf72acc5fdad64657598564f4397b",
+      "size_bytes": 6739
+    },
+    "tests/test_model.py": {
+      "git_lfs": false,
+      "sha256": "0d1d8f17afa457553a195af65db0313006754c4d4cd1144d1fe4afa1f9bb961a",
+      "size_bytes": 1668
+    },
+    "tests/test_package.py": {
+      "git_lfs": false,
+      "sha256": "608536c0e62ff225a6f95c289ff8c272e9f6cb5bded3e9ec28adf4a7c1f91c3b",
+      "size_bytes": 99
+    },
+    "tests/test_pareto.py": {
+      "git_lfs": false,
+      "sha256": "cab69e9d5170980ee2870fc186a19b58045910e8d7383475df8038c7e8c08391",
+      "size_bytes": 2364
+    },
+    "tests/test_pareto_finalization.py": {
+      "git_lfs": false,
+      "sha256": "b26151a66e24ef557756ae255f435e816ce8d1ec01341dd66a9cfd39e8aeeb96",
+      "size_bytes": 3767
+    },
+    "tests/test_production_sampling.py": {
+      "git_lfs": false,
+      "sha256": "3055f1f30a818c24e6ee5c8ff4a363a1bd002bedb3d95aa218e3ac9340cdbc38",
+      "size_bytes": 2437
+    },
+    "tests/test_promotion.py": {
+      "git_lfs": false,
+      "sha256": "97fa2578b640feaa56831d25cd3142b4b35ece3c0b136fc472a45d46f3d42450",
+      "size_bytes": 1345
+    },
+    "tests/test_publication_pipeline.py": {
+      "git_lfs": false,
+      "sha256": "a71696c48231f567420b1b90ab24281ee435b5427b7c5db82a39a99f09e903d7",
+      "size_bytes": 5574
+    },
+    "tests/test_release_bootstrap.py": {
+      "git_lfs": false,
+      "sha256": "99a8f006d67476c1e189e3e71c85e32a3e1f96387342f42842facef831fc050c",
+      "size_bytes": 3440
+    },
+    "tests/test_release_config.py": {
+      "git_lfs": false,
+      "sha256": "aad850db46682c3d729b45dbeba472b3ea7ca25b81d18be612b23799dd8ad4af",
+      "size_bytes": 18203
+    },
+    "tests/test_release_pipeline.py": {
+      "git_lfs": false,
+      "sha256": "8b89d3c37c67d6a6dbcebdccd2c972d0f9d3d4e6480d41b3cf03116bd45f5049",
+      "size_bytes": 10386
+    },
+    "tests/test_samplers.py": {
+      "git_lfs": false,
+      "sha256": "452eb4488d8dce464a8b158f1e4e57a805e6f6dc6c875d57eb19dc727ddd3fae",
+      "size_bytes": 1863
+    },
+    "tests/test_tokenizer.py": {
+      "git_lfs": false,
+      "sha256": "68a89f90ecad4152f22f890a86a861b19945484d00e06e8280e914bb836e8f51",
+      "size_bytes": 1001
+    },
+    "tests/test_tracking.py": {
+      "git_lfs": false,
+      "sha256": "1dd5fcaf80fd0079ac7ff08e9b30a94d27c575156460ede590489f40bb709740",
+      "size_bytes": 606
+    },
+    "tests/test_training.py": {
+      "git_lfs": false,
+      "sha256": "be87b66262c330ccde0fa807a574b0e3e9d870206921c2b4b7f62299c1e0d04d",
+      "size_bytes": 2259
+    }
+  },
+  "created_at": "2026-08-03T14:45:20.881922+00:00",
+  "external_files": {
+    "external/apex-pathogen/APEX_models.py": {
+      "sha256": "34d31fe74cb74a2320c7a7299cab4319ab7f9967637b27a506a3a6c600296f48",
+      "size_bytes": 3870
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_2&256&2048&1e-05&0.0&0.1": {
+      "sha256": "fccd356cbb901c08fe7d35663f3902a5d2d01a4c257203af931aabf02bdd7913",
+      "size_bytes": 35897011
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_3&128&1024&1e-06&0.001&2.0": {
+      "sha256": "857e17d7703d771f82fe63dd82f15a86dd60a0b4f705577a56b88485d60a60c6",
+      "size_bytes": 11235187
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_3&128&2048&1e-06&0.0&1.0": {
+      "sha256": "9db48419381d7bcdac2ad3154aa6b67327c6da47dce973bb8a0745e5632ff79a",
+      "size_bytes": 28067699
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_3&128&2048&1e-06&0.001&0.1": {
+      "sha256": "9362c006ccc0e7ae3fd5210f2cbbe9ed02cec4ff6383f95a119acab9b020aea4",
+      "size_bytes": 28067699
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_3&128&2048&1e-06&0.001&2.0": {
+      "sha256": "58b5eeb6c8c8c4b94d1d776c92f5c653177cfcf3b77ec41cf409839304c8cc80",
+      "size_bytes": 28067699
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_3&256&2048&1e-05&0.001&0.1": {
+      "sha256": "6d3f2bd66c6b3f138e98fb13d1a3010ee94714b9ebf9673475192b365d388858",
+      "size_bytes": 40629107
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_3&256&2048&1e-06&0.001&0.1": {
+      "sha256": "69f101c4e3a1309166493f96221a8c44e37c87bd7a988240b32e26819162c954",
+      "size_bytes": 40629683
+    },
+    "external/apex-pathogen/APEX_pathogen_models/APEX_3&256&512&1e-06&0.0&2.0": {
+      "sha256": "d56b8153a4618620f3b3f91aeb204d6ba8ac38af2ab2f3dff77a28863bc49059",
+      "size_bytes": 17739571
+    },
+    "external/apex-pathogen/LICENSE": {
+      "sha256": "23f821451bf60d3ab0d497aed4b57308340fa795b9365cd1a646c88bb8be9265",
+      "size_bytes": 1060
+    },
+    "external/models/facebook/esm2_t30_150M_UR50D/config.json": {
+      "sha256": "e512f68ec444d99477703a9806639ca83da3dbc19f6c5fe428d6e5b7460972dc",
+      "size_bytes": 779
+    },
+    "external/models/facebook/esm2_t30_150M_UR50D/model.safetensors": {
+      "sha256": "c3f1da8aea53bddd32c246c86168c23b9fd72341fb9db9a94436f855f5053566",
+      "size_bytes": 595257706
+    },
+    "external/models/facebook/esm2_t30_150M_UR50D/special_tokens_map.json": {
+      "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+      "size_bytes": 125
+    },
+    "external/models/facebook/esm2_t30_150M_UR50D/tokenizer_config.json": {
+      "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+      "size_bytes": 95
+    },
+    "external/models/facebook/esm2_t30_150M_UR50D/vocab.txt": {
+      "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03",
+      "size_bytes": 93
+    }
+  },
+  "release": "amp-design-v1.3.0",
+  "schema_version": 1,
+  "source_revision": "088c278dfda659ff46ef1804589a93745b3a312d"
+}

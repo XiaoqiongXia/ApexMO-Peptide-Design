@@ -1,0 +1,105 @@
+{
+  "all_scorers_promoted": true,
+  "inputs": {
+    "./outputs/custom_scorers_stage_b2_nested_v1_2/dehomologized_frozen_test_v1/dehomologized_metrics.json": "4ac85d4e84708949c2891c8ac3db9383ecf5555ead313d178ca6b138791525af",
+    "./outputs/custom_scorers_stage_b2_nested_v1_2/frozen_test_metrics_repaired.json": "569d58e8bb227d63dcfeb86c5e7ae44de33af0a285052f6559a4495d5967b8dc",
+    "./outputs/custom_scorers_stage_b2_nested_v1_2/metrics.json": "f87c800195190152b873475913a7099d9ca5e7c909a61f014d2640c9da35ec2b"
+  },
+  "schema_version": 1,
+  "tasks": {
+    "hemolysis": {
+      "all_numeric_gates_pass": true,
+      "checks": {
+        "dehomologized_evaluation_present": true,
+        "frozen_auroc_drop_le_0_10": true,
+        "frozen_auroc_ge_0_70": true,
+        "frozen_sensitivity_ge_0_90": true,
+        "frozen_specificity_ge_0_20": true,
+        "main_auprc_ge_prevalence_plus_0_10": true,
+        "main_auroc_ge_0_75": true,
+        "main_sensitivity_ge_0_95": true,
+        "main_specificity_ge_0_30": true,
+        "seed123_auroc_ge_0_70": true,
+        "seed123_sensitivity_ge_0_95": true,
+        "seed123_specificity_ge_0_20": true,
+        "seed2025_auroc_ge_0_70": true,
+        "seed2025_sensitivity_ge_0_95": true,
+        "seed2025_specificity_ge_0_20": true
+      },
+      "dehomologized_metrics": {
+        "auprc": 0.7111954170070588,
+        "auroc": 0.7473099618188129,
+        "confusion_matrix": {
+          "fn": 9,
+          "fp": 56,
+          "tn": 30,
+          "tp": 58
+        },
+        "coverage_rule": "query and target coverage >= 0.80",
+        "identity_rule": "maximum development identity < 0.50",
+        "mcc": 0.24420081812970032,
+        "n": 153,
+        "n_complete_frozen": 386,
+        "n_excluded_homologous": 233,
+        "n_negative": 86,
+        "n_positive": 67,
+        "prevalence": 0.43790849673202614,
+        "sensitivity": 0.8656716417910447,
+        "specificity": 0.3488372093023256,
+        "split": "independent",
+        "task": "hemolysis",
+        "threshold": 0.20631123051000427
+      },
+      "formal_gate_pass": true,
+      "main_seed": 42,
+      "prevalence": 0.4623376623376623
+    },
+    "toxicity": {
+      "all_numeric_gates_pass": true,
+      "checks": {
+        "dehomologized_evaluation_present": true,
+        "frozen_auroc_drop_le_0_10": true,
+        "frozen_auroc_ge_0_70": true,
+        "frozen_sensitivity_ge_0_90": true,
+        "frozen_specificity_ge_0_20": true,
+        "main_auprc_ge_prevalence_plus_0_10": true,
+        "main_auroc_ge_0_75": true,
+        "main_sensitivity_ge_0_95": true,
+        "main_specificity_ge_0_30": true,
+        "seed123_auroc_ge_0_70": true,
+        "seed123_sensitivity_ge_0_95": true,
+        "seed123_specificity_ge_0_20": true,
+        "seed2025_auroc_ge_0_70": true,
+        "seed2025_sensitivity_ge_0_95": true,
+        "seed2025_specificity_ge_0_20": true
+      },
+      "dehomologized_metrics": {
+        "auprc": 0.8202415787073285,
+        "auroc": 0.8878516624040921,
+        "confusion_matrix": {
+          "fn": 27,
+          "fp": 385,
+          "tn": 431,
+          "tp": 318
+        },
+        "coverage_rule": "query and target coverage >= 0.80",
+        "identity_rule": "maximum development identity < 0.50",
+        "mcc": 0.4207118469410474,
+        "n": 1161,
+        "n_complete_frozen": 2206,
+        "n_excluded_homologous": 1045,
+        "n_negative": 816,
+        "n_positive": 345,
+        "prevalence": 0.2971576227390181,
+        "sensitivity": 0.9217391304347826,
+        "specificity": 0.5281862745098039,
+        "split": "test",
+        "task": "toxicity",
+        "threshold": 0.14204831361422585
+      },
+      "formal_gate_pass": true,
+      "main_seed": 42,
+      "prevalence": 0.4998300283286119
+    }
+  }
+}

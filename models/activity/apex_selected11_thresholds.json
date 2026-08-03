@@ -1,0 +1,33 @@
+{
+  "activity_aggregation": "median",
+  "activity_output_column": "apex_pathogen_median_log10_mic",
+  "activity_panel": "APEX legacy 34-output model; 11 APEX-pathogen-matched targets",
+  "activity_quantiles_log10_mic": {
+    "0.1": 1.3818303700854884,
+    "0.5": 1.8882911493880563,
+    "0.9": 2.117821914032198
+  },
+  "activity_scorer": "apex",
+  "activity_targets": [
+    "E. coli ATCC11775",
+    "P. aeruginosa PAO1",
+    "P. aeruginosa PA14",
+    "S. aureus ATCC12600",
+    "E. coli AIG221",
+    "E. coli AIG222",
+    "K. pneumoniae ATCC13883",
+    "A. baumannii ATCC19606",
+    "S. aureus (ATCC BAA-1556) - MRSA",
+    "vancomycin-resistant E. faecalis ATCC700802",
+    "vancomycin-resistant E. faecium ATCC700221"
+  ],
+  "benchmark_eligible_rows": 16740,
+  "benchmark_input": "./outputs/apex_known_amp_benchmark_v1/known_amp_apex_scores.csv",
+  "benchmark_input_sha256": "6bbb44046af00de4c0a3c15eb589e65a7da5300828c73c3afc3e587376d38392",
+  "created_at": "2026-08-01T22:29:15.105346+00:00",
+  "model_set_sha256": "89a42a8b33729f0cb85b9e481751fc90d70bc6767a73b61d71f839df01ab4a65",
+  "repository_commit": "203055125196eee0b0f3c456335d3e9aede0e942",
+  "schema_version": 1,
+  "uncertainty_column": "apex_median_log10_mic_sd",
+  "uncertainty_threshold_q95_log10_mic_sd": 0.2771194710771432
+}

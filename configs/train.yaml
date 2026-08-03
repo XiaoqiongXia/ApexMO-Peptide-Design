@@ -1,0 +1,59 @@
+seed: 42
+sampling: sequence
+device: cuda
+
+paths:
+  data_dir: data/processed/splits_v2
+  split_manifest: configs/splits/amp_flow_v2.yaml
+
+model:
+  hidden_size: 256
+  n_blocks: 6
+  n_heads: 8
+  mlp_ratio: 4
+  dropout: 0.1
+  time_embedding_dim: 128
+  length_embedding_dim: 128
+  condition_dim: 256
+  max_length: 64
+
+flow:
+  exponent: 1.0
+  time_epsilon: 0.001
+
+training:
+  batch_size: 256
+  buffer_size: 2048
+  max_steps: 50000
+  precision: bf16
+  grad_clip: 1.0
+  eval_every: 500
+  sample_every: 2000
+  early_stopping_patience: 10
+  ema_decay: 0.999
+  compile: false
+  resume: null
+
+optimizer:
+  lr: 0.0003
+  betas: [0.9, 0.95]
+  weight_decay: 0.03
+  warmup_steps: 1000
+  eta_min_ratio: 0.1
+
+evaluation:
+  batch_size: 512
+
+generation:
+  monitor_steps: 64
+  evaluation_steps: 256
+  time_epsilon: 0.001
+
+logging:
+  log_every: 50
+
+hydra:
+  run:
+    dir: outputs/${sampling}_seed${seed}_${now:%Y%m%d_%H%M%S}
+  job:
+    chdir: false

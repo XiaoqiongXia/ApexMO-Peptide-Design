@@ -1,0 +1,147 @@
+{
+  "activity_contracts": [
+    {
+      "git_lfs": false,
+      "path": "models/activity/apex_pathogen_thresholds.json",
+      "sha256": "ffaaa25d509dc562e7a6318adcd3f35443cbace35b6453b77b95797622590e19",
+      "size_bytes": 824
+    },
+    {
+      "git_lfs": false,
+      "path": "models/activity/apex_selected11_thresholds.json",
+      "sha256": "904dadc77da92f59120167f32c589c7de75a2de4d0d9d8cb860271f82c522e20",
+      "size_bytes": 1293
+    }
+  ],
+  "external_models": {
+    "apex": {
+      "redistributed": false,
+      "repository": "https://gitlab.com/machine-biology-group-public/apex",
+      "revision": "203055125196eee0b0f3c456335d3e9aede0e942"
+    },
+    "apex_pathogen": {
+      "license": "MIT",
+      "redistributed": false,
+      "repository": "https://gitlab.com/machine-biology-group-public/apex-pathogen",
+      "revision": "417a4441a1e6ef8b10d2352e1c059622d5259f3a"
+    },
+    "esm2": {
+      "redistributed": false,
+      "repo_id": "facebook/esm2_t30_150M_UR50D",
+      "revision": "a695f6045e2e32885fa60af20c13cb35398ce30c"
+    },
+    "hemopi2": {
+      "redistributed": false,
+      "repository": "https://github.com/raghavagps/hemopi2",
+      "revision": "2b67a5c85422b25ae847100ebaa81ad586950928",
+      "zenodo_archive_sha256": "ac0b5567fbb4bd08869bf3c43facb0883d96cf7dfd0afddef9919255e31e1c81",
+      "zenodo_record": "14676712"
+    },
+    "toxinpred3": {
+      "redistributed": false,
+      "repository": "https://github.com/raghavagps/toxinpred3",
+      "revision": "dcdba833cd48cc8a2090ac90f3319fd9bcb87a1c"
+    }
+  },
+  "generator_models": [
+    {
+      "git_lfs": true,
+      "path": "models/generator/amp_flow_seed42_step3499.pt",
+      "selected_step": 3499,
+      "sha256": "5de3ab10f7d5b26d00aa9be46340ad16aad6d7ea42c7a65c1619aba82c81ec6a",
+      "size_bytes": 118678945,
+      "training_seed": 42,
+      "validation_loss": 1.2664166434557873
+    },
+    {
+      "git_lfs": true,
+      "path": "models/generator/amp_flow_seed123_step3499.pt",
+      "selected_step": 3499,
+      "sha256": "962853984d267716d71f651872f877e27a26bfa2c9d130a5baeb90a5092976c8",
+      "size_bytes": 118678945,
+      "training_seed": 123,
+      "validation_loss": 1.2649230786427617
+    },
+    {
+      "git_lfs": true,
+      "path": "models/generator/amp_flow_seed2025_step3499.pt",
+      "selected_step": 3499,
+      "sha256": "0db7152d8720800da936ca0396fc49594a7dd02e1fd99b44382c74df1f2f624f",
+      "size_bytes": 118678881,
+      "training_seed": 2025,
+      "validation_loss": 1.2685010774845507
+    }
+  ],
+  "known_amp_references": [
+    {
+      "git_lfs": false,
+      "path": "assets/known_amp/known_amp_sequences.fasta",
+      "sha256": "9ff7369ac3f6c3e7d9559bd455df8f5900e3062f5250828f76b1ae799aead07a",
+      "size_bytes": 626861
+    }
+  ],
+  "release": "amp-design-v1.3.0",
+  "safety_models": [
+    {
+      "git_lfs": false,
+      "path": "models/safety/toxicity_model.pkl",
+      "sha256": "c6585c75de74932819eae679d83ec45b39013c4bd3b1f3a0a6199c313f45c91e",
+      "size_bytes": 21614
+    },
+    {
+      "git_lfs": false,
+      "path": "models/safety/hemolysis_model.pkl",
+      "sha256": "4414abb474f9d32d54b0953a06b9f32739ab6397a588c5b91e2c87d1ffe93eae",
+      "size_bytes": 21614
+    },
+    {
+      "git_lfs": false,
+      "path": "models/safety/scorer_promotion_gate_v1_3.json",
+      "sha256": "c5ad44f978b78ac0fb8c30e4da5ed2a1f5e73513be45c16042fe1bee98fab5c7",
+      "size_bytes": 3769
+    },
+    {
+      "git_lfs": false,
+      "path": "models/safety/training_metrics.json",
+      "sha256": "8ecefb28fc90c87a90236951a56bb3175096c5c4a2eb62b7d65b035897af6495",
+      "size_bytes": 5304
+    },
+    {
+      "git_lfs": false,
+      "path": "models/safety/frozen_test_metrics.json",
+      "sha256": "8a3b21f8774f5da44bb4343ecc34012abb4cb12de608773d03c7dc9640b98b4a",
+      "size_bytes": 535
+    },
+    {
+      "git_lfs": false,
+      "path": "models/safety/pretrain_manifest.json",
+      "sha256": "bd0b6bf0134fe6500865d89da4026511ba8676a022fb90b3a2dfd6fe57209dd5",
+      "size_bytes": 682
+    },
+    {
+      "git_lfs": false,
+      "path": "models/stability_exploratory/stability_model.pkl",
+      "sha256": "333bf013eba1daf233ad9442ed26a539ff72a08dc29a24495b214301f002c9f8",
+      "size_bytes": 18800
+    },
+    {
+      "git_lfs": false,
+      "path": "models/safety/ad/safety_ad_config.json",
+      "sha256": "d49fa98094267096bb89e9c6685180d1dbb97432a58f195878a37f6f78768d78",
+      "size_bytes": 571
+    },
+    {
+      "git_lfs": true,
+      "path": "models/safety/ad/toxicity_esm_reference.npz",
+      "sha256": "8fda1c9b62a79f1045a9107ac8f76bac6bf249c1fb71f4e2f5e24a19dbe4a495",
+      "size_bytes": 21313153
+    },
+    {
+      "git_lfs": true,
+      "path": "models/safety/ad/hemolysis_esm_reference.npz",
+      "sha256": "aff23e5944761bb209ed1e4b86e73db15a371377590e523f3ba9679b215cca89",
+      "size_bytes": 3724523
+    }
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,23 @@
+{
+  "esm_5nn_thresholds": {
+    "hemolysis": 0.043201301246881485,
+    "toxicity": 0.03507343307137489
+  },
+  "length_ranges": {
+    "hemolysis": [
+      6,
+      39
+    ],
+    "toxicity": [
+      4,
+      35
+    ]
+  },
+  "method": "mean cosine distance to five nearest ESM-2 reference embeddings plus training length range",
+  "note": "Portable release AD. It does not invoke the legacy DBAASP physicochemical executable.",
+  "reference_assets": {
+    "hemolysis": "hemolysis_esm_reference.npz",
+    "toxicity": "toxicity_esm_reference.npz"
+  },
+  "schema_version": 1
+}

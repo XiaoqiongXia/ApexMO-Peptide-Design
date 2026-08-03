@@ -1,0 +1,10 @@
+name: amp_flow
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - pip
+  - mmseqs2
+  - pip:
+      - -e .[optimization,dev]

@@ -1,0 +1,38 @@
+version: apex_strain_groups_v1
+pathogen:
+  - E. coli ATCC11775
+  - P. aeruginosa PAO1
+  - P. aeruginosa PA14
+  - S. aureus ATCC12600
+  - E. coli AIG221
+  - E. coli AIG222
+  - K. pneumoniae ATCC13883
+  - A. baumannii ATCC19606
+  - S. aureus (ATCC BAA-1556) - MRSA
+  - vancomycin-resistant E. faecalis ATCC700802
+  - vancomycin-resistant E. faecium ATCC700221
+  - Salmonella enterica ATCC 9150 (BEIRES NR-515)
+  - Salmonella enterica (BEIRES NR-170)
+  - Salmonella enterica ATCC 9150 (BEIRES NR-174)
+  - L. monocytogenes ATCC 19111 (BEIRES NR-106)
+commensal:
+  - A. muciniphila ATCC BAA-835
+  - B. fragilis ATCC25285
+  - B. vulgatus ATCC8482
+  - C. aerofaciens ATCC25986
+  - C. scindens ATCC35704
+  - B. thetaiotaomicron ATCC29148
+  - B. thetaiotaomicron Complemmented
+  - B. thetaiotaomicron Mutant
+  - B. uniformis ATCC8492
+  - B. eggerthi ATCC27754
+  - P. distasonis ATCC8503
+  - P. copri DSMZ18205
+  - B. ovatus ATCC8483
+  - E. rectale ATCC33656
+  - C. symbiosum
+  - R. obeum
+  - R. torques
+  - E. coli Nissle
+ambiguous:
+  - C. spiroforme ATCC29900

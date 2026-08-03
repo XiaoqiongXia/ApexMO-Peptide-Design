@@ -1,0 +1,25 @@
+{
+  "C_grid": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "device": "cuda",
+  "input_hashes": {
+    "hemolysis_normalized.csv": "4294072bf12c8f6b32a88964b30f01f13a4c9557dbf8a6e9e0ab3dc91be930a0",
+    "toxicity_normalized.csv": "e40a285aec868856ed1055e45bf6fb4f7d3a3740f2528c5848afc1c2f06a46da"
+  },
+  "model": "./external/models/facebook/esm2_t30_150M_UR50D",
+  "model_config_sha256": "e512f68ec444d99477703a9806639ca83da3dbc19f6c5fe428d6e5b7460972dc",
+  "script": "./scripts/train_custom_scorers_nested_v1_1.py",
+  "script_sha256": "b28905cb6c5f7f13890d7abdc2e5f8b3325d13c9a295991c61f32dc9a5b7c0af",
+  "seeds": [
+    42,
+    123,
+    2025
+  ]
+}

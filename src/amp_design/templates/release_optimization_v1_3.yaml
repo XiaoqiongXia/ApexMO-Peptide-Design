@@ -1,0 +1,48 @@
+optimization:
+  ranked_candidates: assets/pareto/pareto_ranked_complete.parquet
+  initial_population: assets/pareto/pareto_diverse_500.csv
+  training_sequences: assets/training/amp_train_sequences.csv
+  promotion_gate: models/safety/scorer_promotion_gate_v1_3.json
+  scorer_root: models/safety
+  safety_ad_root: models/safety/ad
+  stability_model: models/stability_exploratory/stability_model.pkl
+  esm_model: external/models/facebook/esm2_t30_150M_UR50D
+  apex_root: external/apex-pathogen
+  activity_scorer: apex_pathogen
+  activity_thresholds: models/activity/apex_pathogen_thresholds.json
+  # Empty targets preserve the backend's default all-pathogen median.
+  # Set one or more exact APEX pathogen names to optimize only that panel.
+  activity_targets: []
+  activity_aggregation: median
+  activity_quantile: 0.5
+  activity_output_column: null
+  activity_command: []
+  activity_model_files: []
+  objectives: []
+  output_root: outputs/genetic_pareto_v1_3
+  seeds: [42, 123, 2025]
+  generations: 100
+  population_size: 500
+  batch_size_apex: 3000
+  batch_size_esm: 32
+  device: cuda:0
+  protocol: three_objective_apex_pathogen_portable_ad_uncertainty_novelty_v2
+  mmseqs_command: [mmseqs]
+  mmseqs_threads: 16
+  cluster_max_members: 5
+  resume_generation: 1
+  apex_uncertainty_max: 0.35883064907437795
+  novelty_max_identity: 0.5
+  novelty_min_coverage: 0.8
+  enforce_safety_ad: true
+  enforce_apex_uncertainty: true
+  enforce_novelty: true
+  enforce_initial_edit_distance: false
+  max_initial_edit_fraction: 0.25
+  max_initial_edits: 5
+  same_anchor_crossover: true
+  max_offspring_attempts: 20
+  early_stopping_patience: 0
+  early_stopping_min_delta: 0.001
+  early_stopping_metric: hypervolume
+  novelty_references: []
