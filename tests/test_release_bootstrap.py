@@ -55,6 +55,18 @@ def test_bootstrap_rejects_incomplete_conda_environment_prefixes() -> None:
     assert "Removing incomplete Conda environment prefix" in text
 
 
+def test_github_ci_installs_cpu_torch_before_project_dependencies() -> None:
+    workflow = ROOT / "github_release_template/.github/workflows/ci.yml"
+    if not workflow.exists():
+        workflow = ROOT / ".github/workflows/ci.yml"
+    text = workflow.read_text(encoding="utf-8")
+    command = (
+        "python -m pip install torch==2.8.0 "
+        "--index-url https://download.pytorch.org/whl/cpu"
+    )
+    assert text.count(command) == 2
+
+
 def test_public_pipeline_uses_runtime_environment_not_personal_path() -> None:
     paths = [
         ROOT / "src/amp_design/templates/publication_pipeline_apex_dual_v1.yaml",

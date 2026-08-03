@@ -7,8 +7,8 @@
     },
     ".github/workflows/ci.yml": {
       "git_lfs": false,
-      "sha256": "c1bbae067acf19f3d23e347b6da67602aa9ec621f1277a03ca171847e6ae2cad",
-      "size_bytes": 967
+      "sha256": "649c84cbc03ba21faece5f33f8b9818e43e6b4eb79e79057053f870dd33a7b7c",
+      "size_bytes": 1161
     },
     ".gitignore": {
       "git_lfs": false,
@@ -517,8 +517,8 @@
     },
     "tests/test_release_bootstrap.py": {
       "git_lfs": false,
-      "sha256": "99a8f006d67476c1e189e3e71c85e32a3e1f96387342f42842facef831fc050c",
-      "size_bytes": 3440
+      "sha256": "ba2aeebb9add5429cd9a995153ac3a13f6d1313fb6077273e03a86c5355a4849",
+      "size_bytes": 3886
     },
     "tests/test_release_config.py": {
       "git_lfs": false,
