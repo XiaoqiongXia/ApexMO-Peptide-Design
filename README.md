@@ -3,7 +3,7 @@
 Antimicrobial peptide design with discrete flow matching and multi-objective
 optimization.
 
-ApexMO generates peptides of a specified length, then searches for sequences
+ApexMO generates peptides of a specified length, then optimizes for sequences
 with lower predicted MIC, toxicity and hemolysis. The repository includes the
 training and sampling code, three trained generators, scoring models and the
 scripts used to select candidates for experimental testing.
