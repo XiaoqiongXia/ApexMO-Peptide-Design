@@ -27,8 +27,8 @@
     },
     "MODEL_CARD.md": {
       "git_lfs": false,
-      "sha256": "2198ce04ceae27b2daa0071f5937f63aa7671f934aa0955cffed9fa911f7ffcc",
-      "size_bytes": 3210
+      "sha256": "a6f4a7be6aef6d7b2ee7fc0cea0d3c3cf63963c44bbcb191e92070787d1a7f6b",
+      "size_bytes": 4144
     },
     "README.md": {
       "git_lfs": false,
@@ -117,8 +117,8 @@
     },
     "models/MODEL_MANIFEST.json": {
       "git_lfs": false,
-      "sha256": "df9c520a5e6076eaa3dd4415ea3fb7d28c16edf3564ead18e34506a04c4574d0",
-      "size_bytes": 4882
+      "sha256": "237d2035beaa92fe24035e1bf554804d95c4ea5351cdcfcf360e5825eb9b7c5b",
+      "size_bytes": 5091
     },
     "models/activity/apex_pathogen_thresholds.json": {
       "git_lfs": false,
@@ -159,6 +159,11 @@
       "git_lfs": true,
       "sha256": "8fda1c9b62a79f1045a9107ac8f76bac6bf249c1fb71f4e2f5e24a19dbe4a495",
       "size_bytes": 21313153
+    },
+    "models/safety/dehomologized_test_metrics.json": {
+      "git_lfs": false,
+      "sha256": "4ac85d4e84708949c2891c8ac3db9383ecf5555ead313d178ca6b138791525af",
+      "size_bytes": 1325
     },
     "models/safety/frozen_test_metrics.json": {
       "git_lfs": false,
@@ -512,7 +517,7 @@
     }
   },
   "created_at": "2026-08-03T14:45:20.881922+00:00",
-  "documentation_updated_at": "2026-09-17T20:42:22.378292+00:00",
+  "documentation_updated_at": "2026-09-17T21:29:10.444771+00:00",
   "external_files": {
     "external/apex-pathogen/APEX_models.py": {
       "sha256": "34d31fe74cb74a2320c7a7299cab4319ab7f9967637b27a506a3a6c600296f48",

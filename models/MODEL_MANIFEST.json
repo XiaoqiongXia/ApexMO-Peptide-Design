@@ -141,6 +141,12 @@
       "path": "models/safety/ad/hemolysis_esm_reference.npz",
       "sha256": "aff23e5944761bb209ed1e4b86e73db15a371377590e523f3ba9679b215cca89",
       "size_bytes": 3724523
+    },
+    {
+      "git_lfs": false,
+      "path": "models/safety/dehomologized_test_metrics.json",
+      "sha256": "4ac85d4e84708949c2891c8ac3db9383ecf5555ead313d178ca6b138791525af",
+      "size_bytes": 1325
     }
   ],
   "schema_version": 1

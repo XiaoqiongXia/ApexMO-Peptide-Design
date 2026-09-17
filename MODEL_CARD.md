@@ -15,14 +15,31 @@ in [`models/MODEL_MANIFEST.json`](models/MODEL_MANIFEST.json).
 ## Scoring models
 
 The toxicity and hemolysis classifiers use ESM-2 sequence embeddings and
-sequence length. Their evaluation excludes test sequences with a
-development-set MMseqs2 match at ≥50% identity and ≥80% query/target coverage.
+sequence length. The manuscript and Fig. 2 report results on the complete
+frozen test sets:
 
 | Classifier | Test sequences | AUROC | AUPRC | Sensitivity | Specificity |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Toxicity | 1,161 | 0.8879 | 0.8202 | 0.9217 | 0.5282 |
-| Hemolysis | 153 | 0.7473 | 0.7112 | 0.8657 | 0.3488 |
+| Toxicity | 2,206 | 0.9303 | 0.9384 | 0.9637 | 0.5245 |
+| Hemolysis | 386 | 0.8301 | 0.8298 | 0.9274 | 0.3382 |
 
+A separate evaluation removes test sequences with a development-set MMseqs2
+match at ≥50% identity and ≥80% coverage of both sequences. It reuses the
+same predictions and classification thresholds, without retraining the models:
+
+| Classifier | Retained sequences | Excluded sequences | AUROC | AUPRC | Sensitivity | Specificity |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Toxicity | 1,161 | 1,045 | 0.8879 | 0.8202 | 0.9217 | 0.5282 |
+| Hemolysis | 153 | 233 | 0.7473 | 0.7112 | 0.8657 | 0.3488 |
+
+Both tables report average precision as AUPRC. The evaluation sets also differ
+in class balance: the positive fraction changes from 50.0% to 29.7% for toxicity
+and from 46.4% to 43.8% for hemolysis. These are evaluations on different samples,
+not scores from different model versions.
+
+The exact values are available in
+[`frozen_test_metrics.json`](models/safety/frozen_test_metrics.json) and
+[`dehomologized_test_metrics.json`](models/safety/dehomologized_test_metrics.json).
 Specificity is limited, particularly for hemolysis. These scores support
 candidate selection and do not establish experimental safety.
 
