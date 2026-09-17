@@ -1,106 +1,93 @@
-# AMP Design v1.3 research code package
+# Usage guide
 
-## Release status
+Run commands from the repository root. The main entry point is
+`bash scripts/run_full_pipeline.sh`; it loads the environment configured during
+installation and uses `configs/pipeline.yaml` by default.
 
-This package is a research-code release for reproducible AMP sampling and
-three-objective genetic Pareto optimization. It does not claim experimental,
-clinical, or therapeutic validation of generated peptides.
+## Installation and checks
 
-The Python wheel contains the AMP Design implementation. Model checkpoints,
-training data, ESM weights, APEX weights, MMseqs2, and generated outputs are
-external runtime assets and are not bundled into the wheel.
+`bash scripts/bootstrap.sh` creates two Conda environments: `amp_flow` for the
+main pipeline and `amp_toxinpred3` for ToxinPred3's older scikit-learn runtime.
+It retrieves Git LFS files and external model weights, then saves local
+interpreter paths in the ignored `.amp_design_env` file.
 
-## Installation
-
-Python 3.10 or newer is required. Install the optimization extras when genetic
-optimization will be run:
+To rerun the installation checks:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -e '.[optimization]'
+bash scripts/run_smoke_test.sh
 ```
 
-The sampler uses the pinned `flow-matching==1.0.10` API. That dependency is
-CC BY-NC 4.0 and therefore constrains this release workflow to non-commercial
-research unless separate permission is obtained.
+These checks include file hashes, configuration loading, a two-sequence
+sampling test and ToxinPred3/HemoPI2 inference. They do not run the full
+optimization. `bash scripts/bootstrap.sh --skip-smoke` skips these checks
+during setup; run them once all assets are available.
 
-The optimization extra pins the ESM/scorer runtime (`transformers==5.12.1`,
-`scikit-learn==1.7.1`). The full preflight records these and all other core
-package versions together with model and input hashes.
-
-MMseqs2 must be executable using the command listed in the optimization YAML.
-The checked project environment uses `conda run -n bg mmseqs`.
-
-An installed wheel can write both editable example configurations without
-requiring the source checkout:
+For manual installation, create the environments and fetch the assets:
 
 ```bash
-amp-design init-config --output-dir configs/release_v1_3
+git lfs install --local
+git lfs pull
+conda env create -f environment.yml
+conda env create -f environment-toxinpred3.yml
+conda activate amp_flow
+bash scripts/setup_external_assets.sh
+export AMP_TOXINPRED3_PYTHON="$(conda run -n amp_toxinpred3 which python)"
 ```
+
+Manual installation supports the `amp-design` commands below. The shell
+runners additionally require `.amp_design_env`, which bootstrap creates.
+MMseqs2 is included in `environment.yml`; check it with `mmseqs version`.
 
 ## Sampling
 
-Copy and edit `configs/release_sampling_v1_3.example.yaml`, then validate all
-paths and the selected compute device without writing output:
+After bootstrap, activate the main environment before using the CLI directly:
 
 ```bash
-amp-design check-sample --config configs/release_sampling_v1_3.example.yaml
+source .amp_design_env
+conda activate "$AMP_DESIGN_ENV_NAME"
+amp-design check-sample --config configs/sampling.yaml
+amp-design sample --config configs/sampling.yaml
 ```
 
-Run exact-length, deterministic, resumable sharded sampling:
+Edit `configs/sampling.yaml` to choose the checkpoint, peptide lengths, number
+of samples and batch size. `device: auto` selects CUDA when available and CPU
+otherwise. Completed shards are validated and skipped on subsequent runs;
+manifests record sampling parameters and checkpoint hashes.
+
+The standalone sampling configuration uses one generator. The complete
+pipeline lists all three under `sampling_runs` in `configs/pipeline.yaml`.
+
+## Complete workflow
 
 ```bash
-amp-design sample --config configs/release_sampling_v1_3.example.yaml
+bash scripts/run_full_pipeline.sh configs/pipeline.yaml
 ```
 
-Each completed shard is validated before it is accepted. Existing valid shards
-are skipped. A manifest records the checkpoint SHA-256, seeds, lengths, device,
-sampling steps, and every shard path.
+The default configuration samples 1,000 sequences at each length from 10 to
+30 residues for each of three checkpoints (training seeds 42, 123 and 2025).
+After deduplication and reference filtering, it scores the candidates and
+builds a diverse initial population for optimization.
 
-## Genetic Pareto optimization
+The search minimizes median pathogen log10 MIC, toxicity score and hemolysis
+score. It uses the declared 11-strain subset of the 34-strain APEX ensemble,
+a population of 500, and five search seeds: 42, 123, 2025, 271828 and 314159.
+Each search runs for up to 25 generations, with early stopping configured
+after five generations without sufficient hypervolume improvement.
 
-Copy and edit `configs/release_optimization_v1_3.example.yaml`. The required
-inputs are the frozen ranked candidate table, a 500-sequence initial
-population, AMP training sequences, the passed scorer-promotion gate, two
-safety models, a local ESM-2 model, all 40 APEX ensemble models, the APEX strain
-grouping, and MMseqs2.
+Candidates must satisfy the configured applicability-domain, ensemble
+uncertainty and novelty criteria. The default search also limits edits from
+the initial sequence and retains at most five members per MMseqs2 cluster.
+Stability is an additional predicted filter, not a search objective.
 
-Run the lightweight asset check first:
+After the search, candidates from all ranks and seeds are pooled, screened
+with APEX-pathogen, ToxinPred3 and HemoPI2, and ranked again. Final selection
+retains one representative per 80%-identity/80%-coverage MMseqs2 cluster.
+Novelty is measured against the supplied references, not every peptide database.
 
-```bash
-amp-design check-optimize --config configs/release_optimization_v1_3.example.yaml
-```
+## Running individual stages
 
-Run the full scoring preflight. This loads every scoring stack, verifies the
-initial objective values, scores novel probes, and freezes all input and model
-hashes:
-
-```bash
-amp-design optimize \
-  --config configs/release_optimization_v1_3.example.yaml \
-  --preflight-only
-```
-
-Run all configured seeds and generations:
-
-```bash
-amp-design optimize --config configs/release_optimization_v1_3.example.yaml
-```
-
-## End-to-end sampling-to-candidate pipeline
-
-The GitHub release also provides a single configuration that connects multiple
-Flow Matching checkpoints to exact de-duplication, complete-known-AMP MMseqs2
-80% identity/80% coverage filtering, scoring, Pareto initialization, genetic
-search, multi-seed all-rank finalization, dual activity gates, external safety,
-and representative export:
-
-```bash
-amp-design pipeline --config configs/pipeline.yaml
-```
-
-The same run can be split into resumable stages:
+With the main environment active and `AMP_TOXINPRED3_PYTHON` set, the complete
+workflow can also be run as separate stages:
 
 ```bash
 amp-design sample --config configs/pipeline.yaml
@@ -109,84 +96,63 @@ amp-design score-candidates --config configs/pipeline.yaml
 amp-design initialize-pareto --config configs/pipeline.yaml
 amp-design optimize --config configs/pipeline.yaml --preflight-only
 amp-design optimize --config configs/pipeline.yaml
-amp-design finalize --config configs/pipeline.yaml
-amp-design hard-filter --config configs/pipeline.yaml
+amp-design finalize-all-ranks --config configs/pipeline.yaml
+amp-design score-apex-pathogen --config configs/pipeline.yaml
+amp-design external-safety --config configs/pipeline.yaml
+amp-design rank-final --config configs/pipeline.yaml
 ```
 
-For a multi-checkpoint run, declare each generator under `sampling_runs:` and
-list the corresponding manifests under `pipeline.sampling_manifests`. The
-one-command runner rejects a mismatch between these two lists. Set
-`pipeline.require_known_amp_novelty: true` and provide
-`pipeline.known_amp_reference` to ensure that the initial optimization pool is
-built only after the declared known-AMP screen. Existing completed manifests
-can be reused with `run_sampling: false`; a clean reproduction uses new output
-paths and `run_sampling: true`.
+The preflight checks the scoring models and initial population before the
+search. Keep input files, models and other frozen settings unchanged when
+resuming. To continue an interrupted optimization after generation 10, set
+`optimization.resume_generation: 11` in the same configuration and rerun the
+optimization command with the same output root.
 
-For the all-rank dual-APEX publication protocol, add a `publication:` section
-and use `publication_pipeline_apex_dual_v1.yaml`. The single `pipeline` command
-then replaces the legacy rank-0 finalization with the following resumable
-stages:
+## Outputs
+
+Under `outputs/pipeline/`, sampling manifests, prepared and scored candidate
+tables, initial populations and search histories are retained. The final
+outputs in `final/04_final/` include:
+
+- `final_representatives.csv`
+- `final_representatives.parquet`
+- `final_representatives.fasta`
+
+`pipeline_manifest.json` records the input and output hashes for each stage.
+To verify the files shipped with this repository, run:
 
 ```bash
-amp-design finalize-all-ranks --config configs/publication.yaml
-amp-design score-apex-pathogen --config configs/publication.yaml
-amp-design external-safety --config configs/publication.yaml
-amp-design rank-final --config configs/publication.yaml
+python scripts/verify_release_assets.py
 ```
 
-The final stage globally re-ranks every hard-filter-eligible candidate and
-retains one MMseqs2 80% identity/80% coverage representative per cluster,
-prioritizing lower Pareto rank and then higher crowding distance.
+Add `--include-external` to check downloaded assets as well.
 
-`pipeline_manifest.json` binds the sampling manifests, prepared and scored
-tables, initialized pool, per-seed completion records, and every publication
-stage by SHA-256, so the final representatives can be traced to the sampling
-checkpoints without relying on a frozen initial pool.
+## Reference optimization
 
-Machine-specific interpreter paths are supplied through the environment, not
-committed in YAML. Before loading a publication configuration, set:
+`configs/optimization.yaml` is a separate configuration for the bundled
+reference pool. It uses APEX-pathogen directly, three search seeds and
+100 generations; it is not the default full-pipeline configuration.
 
 ```bash
-export AMP_TOXINPRED3_PYTHON="$(conda run -n amp_toxinpred3 which python)"
+amp-design check-optimize --config configs/optimization.yaml
+amp-design optimize --config configs/optimization.yaml --preflight-only
+amp-design optimize --config configs/optimization.yaml
 ```
 
-The assembled GitHub release automates this setup. `scripts/bootstrap.sh`
-creates or updates the `amp_flow` and `amp_toxinpred3` environments from their
-versioned YAML files, pulls Git LFS content, downloads pinned external assets,
-and writes the resolved interpreter to an ignored `.amp_design_env` file.
-`scripts/run_smoke_test.sh` validates the installation without sampling, while
-`scripts/run_full_pipeline.sh` starts or resumes the configured workflow.
+This configuration defaults to `cuda:0`; set `device: cpu` for a CPU run.
+The accompanying candidate tables are in `results/reference_candidates/`.
+Historical implementation and rerun reports are kept in [archive/](archive/).
 
-New offspring are exact-excluded against the training sequences, the complete
-ranked pool, and configured additional reference tables. MMseqs2 additionally
-enforces the declared identity/coverage novelty rule. Formal feasibility also
-requires the portable ESM safety applicability domain and the APEX ensemble
-uncertainty limit. Stability remains exploratory and is an optional final hard
-gate rather than a Pareto objective.
+## Development
 
-The optimizer writes every generation, lineage, MMseqs2 cluster assignment,
-RNG state, full sequence history, and evaluation cache atomically. To resume
-after generation 51, set `resume_generation: 52` in a copied YAML while keeping
-the same output root and frozen inputs, then invoke the same optimize command.
+The bootstrap environment includes the development dependencies. Run the
+checks from the repository root:
 
-## Reproducibility contract
+```bash
+pytest -q
+ruff check src tests
+```
 
-The release optimizer minimizes predicted pathogen log10 MIC, toxicity score,
-and hemolysis score. It uses canonical 10–30 aa sequences, deterministic
-mutation/crossover, seeded constrained rank-and-crowding selection, and an
-80%-identity MMseqs2 cluster cap of five sequences per cluster.
-
-Do not change the inputs, models, promotion gate, strain grouping, or runtime
-implementation after preflight. A mismatch is rejected rather than silently
-continuing a different experiment.
-
-## External assets and licensing
-
-APEX is marked as non-profit research use in the project notices and must be
-obtained and used under its own terms. ESM-2, MMseqs2, PyTorch, Transformers,
-and all other third-party components retain their respective licenses. See
-`THIRD_PARTY_NOTICES.md`.
-
-The repository currently has no project-level `LICENSE` file. A project owner
-must choose and add the intended source-code license before uploading this
-package to a public registry or release page.
+Model architecture, scoring metrics and limitations are described in
+[the model notes](../MODEL_CARD.md). External models and dependencies have
+separate [license terms](../THIRD_PARTY_NOTICES.md).

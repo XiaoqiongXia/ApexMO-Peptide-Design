@@ -1,74 +1,65 @@
-# AMP Design v1.3 model card
+# Model notes
 
-## Intended use
+## Sequence generator
 
-This release supports non-commercial computational research on antimicrobial
-peptide generation and prioritization. It is intended for hypothesis generation
-and experimental candidate selection, not direct medical, diagnostic, clinical,
-environmental-release, or therapeutic decisions.
+ApexMO uses a length-conditioned discrete flow-matching transformer to generate
+peptide sequences. The model has a hidden size of 256, six transformer blocks,
+eight attention heads and a 4× MLP ratio. It supports sequences up to 64
+residues; the default design workflow samples lengths of 10–30 residues.
 
-## Generator models
+Three checkpoints trained with seeds 42, 123 and 2025 are included in
+`models/generator/`. Sampling uses exponential moving average (EMA) weights.
+Checkpoint hashes, selected training steps and validation losses are recorded
+in [`models/MODEL_MANIFEST.json`](models/MODEL_MANIFEST.json).
 
-Three independently seeded exact-length discrete Flow Matching models are
-included under `models/generator/`. Each checkpoint contains the AMP DDiT model
-configuration, model parameters, EMA parameters, optimizer-era metadata, and
-the generation configuration required by `amp-design sample`.
+## Scoring models
 
-The architecture uses hidden size 256, six transformer blocks, eight attention
-heads, a 4x MLP ratio, length conditioning, and a maximum modeled length of 64
-amino acids. The released sampling workflow uses EMA weights.
+The toxicity and hemolysis classifiers use ESM-2 sequence embeddings and
+sequence length. Their evaluation excludes test sequences with a
+development-set MMseqs2 match at ≥50% identity and ≥80% query/target coverage.
 
-Checkpoint hashes, training seeds, selected steps, and validation losses are in
-`models/MODEL_MANIFEST.json`.
+| Classifier | Test sequences | AUROC | AUPRC | Sensitivity | Specificity |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Toxicity | 1,161 | 0.8879 | 0.8202 | 0.9217 | 0.5282 |
+| Hemolysis | 153 | 0.7473 | 0.7112 | 0.8657 | 0.3488 |
 
-## Safety models
+Specificity is limited, particularly for hemolysis. These scores support
+candidate selection and do not establish experimental safety.
 
-The toxicity and hemolysis classifiers consume local ESM-2 embeddings plus
-sequence length. On the dehomologized frozen evaluation used for promotion:
+The default pipeline uses the 40-model APEX ensemble during optimization,
+aggregating predictions over the 11 pathogen strains listed in
+[`configs/pipeline.yaml`](configs/pipeline.yaml). The 8-model APEX-pathogen
+ensemble provides a further activity screen after optimization. ToxinPred3
+and HemoPI2 provide external toxicity and hemolysis predictions.
 
-- toxicity: AUROC 0.8879, AUPRC 0.8202, sensitivity 0.9217, specificity 0.5282;
-- hemolysis: AUROC 0.7473, AUPRC 0.7112, sensitivity 0.8657, specificity 0.3488.
+The ESM encoder is `facebook/esm2_t30_150M_UR50D`. External weights are
+retrieved by `scripts/setup_external_assets.sh`; versions and hashes are
+recorded in the release manifests.
 
-These metrics are predictive performance estimates, not guarantees of safety.
-Specificity is modest, particularly for hemolysis, and model outputs should be
-used as prioritization scores followed by experimental testing.
+## Search settings
 
-## Activity oracle and external encoder
+The default pipeline minimizes three objectives: median pathogen log10 MIC,
+toxicity score and hemolysis score. It uses 500 sequences, five search seeds
+and up to 25 generations, with early stopping. Applicability-domain,
+ensemble-uncertainty, novelty and edit-distance constraints limit the search.
+The exploratory stability predictor is used as an additional filter.
 
-Genetic optimization uses the APEX-pathogen 8-model, 11-pathogen MIC ensemble and
-`facebook/esm2_t30_150M_UR50D`. These weights are not redistributed in this
-repository. `scripts/setup_external_assets.sh` retrieves pinned versions and
-the optimization preflight records their hashes.
+The separate [`configs/optimization.yaml`](configs/optimization.yaml) runs
+APEX-pathogen optimization from the bundled reference pool, with three seeds
+and 100 generations. Reference candidate tables correspond to that workflow.
 
-## Optimization objectives
+## Interpretation
 
-The formal release optimization minimizes:
+All reported activity and safety values are model predictions. The released
+candidates have not been experimentally validated by this package, and
+predictions may be unreliable outside the models' training domains.
 
-1. APEX-pathogen median log10 MIC;
-2. toxicity probability;
-3. hemolysis probability.
+The activity and safety models are not independent experimental assays.
+Synthesis feasibility, aggregation, proteolytic stability, immunogenicity and
+off-target effects require separate assessment. The stability score is
+exploratory and does not establish blood stability. This code is intended for
+computational research and candidate selection, not clinical use.
 
-The search domain is canonical peptides of length 10–30 aa. The default
-population is 500 sequences for 100 generations and three seeds (42, 123,
-2025), with a maximum of five survivors per 80%-identity MMseqs2 cluster.
-All new offspring must also pass a portable ESM 5-nearest-neighbour safety
-applicability domain, the frozen APEX-pathogen ensemble-uncertainty limit, and the
-configured training/reference-set novelty rule.
-
-## Limitations
-
-- No released sequence has been experimentally confirmed by this package.
-- Model predictions may be unreliable outside the training applicability domain.
-- High cationicity, aggregation, synthesis feasibility, proteolytic stability,
-  immunogenicity, and off-target effects require separate assessment.
-- APEX-pathogen and safety objectives are model-correlated and should not be interpreted
-  as independent experimental measurements.
-- The supplementary stability model is exploratory and is not part of the
-  three-objective formal genetic search. It may be enabled as a final
-  prioritization gate, but does not establish experimental blood stability.
-
-## Provenance
-
-All bundled files are listed with SHA-256 digests in `release_manifest.json`.
-Training/evaluation methodology and formal rerun results are documented under
-`docs/`.
+File hashes are listed in [`release_manifest.json`](release_manifest.json).
+See the [usage guide](docs/release_code_package_v1_3.md) for running the models
+and [third-party notices](THIRD_PARTY_NOTICES.md) for dependency terms.
