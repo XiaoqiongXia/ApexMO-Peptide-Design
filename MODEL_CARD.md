@@ -61,5 +61,5 @@ exploratory and does not establish blood stability. This code is intended for
 computational research and candidate selection, not clinical use.
 
 File hashes are listed in [`release_manifest.json`](release_manifest.json).
-See the [usage guide](docs/release_code_package_v1_3.md) for running the models
+See the [usage guide](docs/usage.md) for running the models
 and [third-party notices](THIRD_PARTY_NOTICES.md) for dependency terms.

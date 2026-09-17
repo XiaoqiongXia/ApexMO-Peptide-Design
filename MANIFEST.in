@@ -1,7 +1,7 @@
 include README.md
 include THIRD_PARTY_NOTICES.md
 include configs/apex_strain_groups.yaml
-include configs/release_sampling_v1_3.example.yaml
-include configs/release_optimization_v1_3.example.yaml
-include docs/release_code_package_v1_3.md
+include configs/sampling.yaml
+include configs/optimization.yaml
+include docs/usage.md
 include docs/images/Fig_1.png

@@ -43,7 +43,6 @@ amp-evaluate = "amp_design.evaluate:main"
 amp-apex-score = "amp_design.apex:main"
 amp-apex-pathogen-score = "amp_design.apex_pathogen:main"
 amp-pareto = "amp_design.pareto:main"
-amp-benchmark = "amp_design.benchmark:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

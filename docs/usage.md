@@ -141,7 +141,6 @@ amp-design optimize --config configs/optimization.yaml
 
 This configuration defaults to `cuda:0`; set `device: cpu` for a CPU run.
 The accompanying candidate tables are in `results/reference_candidates/`.
-Historical implementation and rerun reports are kept in [archive/](archive/).
 
 ## Development
 

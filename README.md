@@ -55,7 +55,7 @@ are in `outputs/pipeline/final/04_final/`, with one representative per MMseqs2
 cluster at 80% identity and 80% coverage.
 
 For sampling only, stage-by-stage execution and resuming a run, see the
-[usage guide](docs/release_code_package_v1_3.md).
+[usage guide](docs/usage.md).
 
 ## Code and data
 
