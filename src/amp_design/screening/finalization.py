@@ -1,4 +1,4 @@
-"""Validated pooling and ranking for multi-seed genetic Pareto archives."""
+"""Pool and rank candidates from multiple search seeds."""
 
 from __future__ import annotations
 

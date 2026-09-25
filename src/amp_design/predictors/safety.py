@@ -1,4 +1,4 @@
-"""Validated wrappers for the frozen HemoPI2 and ToxinPred3 predictors."""
+"""Run HemoPI2 and ToxinPred3 and check their prediction outputs."""
 
 from __future__ import annotations
 

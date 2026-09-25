@@ -1,75 +1,70 @@
-# Scorer-training source archive
+# Predictor training
 
-These scripts were copied from the current research-server working directory.
-Their SHA-256 values were checked against the server before inclusion. The only
-source edit changes `Path(__file__).resolve().parents[1]` to `parents[2]` so that
-the new directory depth still resolves the repository root. Training logic,
-parameters, input selection and output filenames are unchanged.
+These scripts come from the research server. They cover toxicity, hemolysis
+and two stability models. The table distinguishes training that saves a model
+from cross-validation that saves evaluation results only.
 
-| Script | Role | Relationship to released weights |
+| Script | Model | Output |
 | --- | --- | --- |
-| `train_custom_scorers_nested_v1_1.py` | Nested group cross-validation and full-data fitting for toxicity and hemolysis | Current server source; its hash differs from the source hash recorded with the released safety weights |
-| `train_custom_scorers.py` | Earlier safety classifiers and exploratory stability Ridge regression | Historical reference; exact correspondence to the released exploratory stability weight is unverified |
-| `train_stability_classifier.py` | Cross-validation of the one-hour blood-stability classifier | Writes evaluation artifacts; does not export a final fitted classifier and is not the released stability regression model |
+| `train_custom_scorers_nested_v1_1.py` | Toxicity and hemolysis classifiers with nested group cross-validation | Fitted models, out-of-fold predictions and metrics |
+| `train_custom_scorers.py` | Earlier safety classifiers and exploratory stability Ridge regression | Fitted models, out-of-fold predictions and metrics |
+| `train_stability_classifier.py` | One-hour blood-stability classifier | Cross-validation results; no final fitted classifier |
 
-## Provenance
+The stability classifier is separate from the regression model in
+`models/stability_exploratory/`.
 
-[`source_manifest.json`](source_manifest.json) records both the original server
-hash and the relocated repository hash for each script, along with the exact
-single replacement. Reversing that replacement recovers the original bytes.
+## Data and dependencies
 
-The released [`pretrain_manifest.json`](../../models/safety/pretrain_manifest.json)
-records safety training-source SHA-256
-`b28905cb6c5f7f13890d7abdc2e5f8b3325d13c9a295991c61f32dc9a5b7c0af`.
-The current server source is
-`5b59939c5a7e65f4a4c5e3d1052cccef14c99cbc8722dbd11b8ad176c29efbef`.
-Neither the original manifest nor model weights were changed to reconcile this
-difference. A historical training commit has not been established. These sources
-are therefore available for inspection, but exact reproduction of published
-weights or metrics has not been demonstrated.
+All paths below are relative to the repository root. The processed training
+data and cached embeddings are not included in this source release.
 
-## Inputs and environment
+| Path | Required by |
+| --- | --- |
+| `outputs/custom_scorers_stage_a_v1/` | All three scripts: normalized CSVs and `mmseqs/*_cluster.tsv` group assignments |
+| `external/models/facebook/esm2_t30_150M_UR50D/` | Both `train_custom_scorers*` scripts: local encoder and tokenizer |
+| `outputs/custom_scorers_stage_b2_nested_v1/` | Nested-CV script: embedding cache; this directory must already exist |
+| `outputs/custom_scorers_stage_b_v1/stab_batch_*.npy` | Stability classifier: cached embeddings in the expected sequence order |
 
-Paths are relative to the repository root, regardless of the working directory:
+The earlier training script does not produce `stab_batch_*.npy`; the script
+that generated those files is not included.
 
-- `outputs/custom_scorers_stage_a_v1/`: normalized toxicity, hemolysis and
-  stability CSVs and the `mmseqs/*_cluster.tsv` group assignments used by each
-  script. These preprocessing artifacts are not bundled in this source release.
-- `external/models/facebook/esm2_t30_150M_UR50D/`: local encoder and tokenizer
-  assets required by the two `train_custom_scorers*` scripts.
-- `outputs/custom_scorers_stage_b2_nested_v1/`: existing embedding-cache directory
-  used by the nested-CV script. It must exist before that script writes a cache.
-- `outputs/custom_scorers_stage_b_v1/stab_batch_*.npy`: existing stability
-  embeddings required by the classifier script. The earlier training script
-  does not create these batch files; their generation step is not included here.
+The scripts use NumPy, pandas, scikit-learn and SciPy. The two
+`train_custom_scorers*` scripts also use PyTorch and Transformers. These are
+provided by the repository's base and `optimization` dependencies, but the
+original training environment has not been recovered as a lockfile.
 
-The sources import NumPy, pandas, scikit-learn, SciPy and, for the two
-`train_custom_scorers*` scripts, PyTorch and Transformers. The repository's base
-and `optimization` dependencies provide these libraries, including SciPy through
-scikit-learn. This is not a recovered lockfile of the original training run.
+## Source versions
 
-## Execution behavior and known limitations
+Source hashes were checked against the server on 25 September 2026.
+[`source_manifest.json`](source_manifest.json) records the original and
+repository hashes. The only edit to each script was the project-root lookup:
+`parents[1]` became `parents[2]` after moving the file into this directory.
+Reversing that edit recovers the original file.
 
-These are standalone Python sources under `scripts/training/`, not part of the
-default candidate-generation pipeline. Read the requirements before executing
-them in a separate local checkout containing copies of the required inputs.
+The safety script's original hash differs from the training-script hash in
+[`models/safety/pretrain_manifest.json`](../../models/safety/pretrain_manifest.json).
+The version used to train the released safety weights has not been located.
+The exact source version for the released stability regression weight is also
+unverified. Retraining with these files has not been shown to reproduce the
+published weights or metrics.
 
-- The nested-CV script creates `outputs/custom_scorers_stage_b2_nested_v1_2/`
-  and fails if that output directory already exists.
-- The earlier script and the stability classifier create their output
-  directories at import time and can overwrite files when executed. They are
-  preserved as sources, not exposed as importable package APIs.
-- In the earlier script, the embedding loop advances by 8 while its slice
-  contains up to 32 sequences. The resulting overlap can misalign embedding rows
-  and labels on an uncached run. This source issue is preserved and documented;
-  the file must not be represented as a validated clean-run reproduction.
-- The stability classifier depends on the existing embedding order. Its source
-  labels grouped records using the first row's binary label while also computing
-  a median half-life; these can disagree for mixed-label records. That behavior
-  is unchanged and requires scientific review before a new training release.
+## Known issues
 
-Integration checks cover source hashes, Python syntax, the relocated root, and
-the existing repository tests. No training was executed, no metrics were
-regenerated, and no server results were modified. Completing a reproducible
-training release still requires matching the historical source version and
-providing the corresponding preprocessing artifacts and environment record.
+- In `train_custom_scorers.py`, the embedding loop advances by 8 but reads up to
+  32 sequences per slice. On an uncached run, overlapping batches can produce
+  more embedding rows than labels.
+- In `train_stability_classifier.py`, each group's label comes from its first
+  row, while its half-life is aggregated by the median. Those two values can
+  disagree when a group contains both stable and unstable measurements.
+
+These behaviors are retained in the source snapshots. Review them before
+using the scripts for new training runs.
+
+## Output directories
+
+The scripts write to fixed paths under `outputs/`. The nested-CV script creates
+`custom_scorers_stage_b2_nested_v1_2/` and stops if that directory already exists.
+The earlier script uses `custom_scorers_stage_b_v1/`; the stability classifier
+uses `custom_scorers_stage_c_stability_classifier_v1/`. Both create directories
+at import time and can overwrite files when run. Run them in a separate
+checkout with copies of the required inputs.

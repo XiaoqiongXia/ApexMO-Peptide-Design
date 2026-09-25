@@ -57,7 +57,7 @@ manifests record sampling parameters and checkpoint hashes.
 The standalone sampling configuration uses one generator. The complete
 pipeline lists all three under `sampling_runs` in `configs/pipeline.yaml`.
 
-## Complete workflow
+## Full workflow
 
 ```bash
 bash scripts/pipeline/run_full_pipeline.sh configs/pipeline.yaml
@@ -69,7 +69,7 @@ After deduplication and reference filtering, it scores the candidates and
 builds a diverse initial population for optimization.
 
 The search minimizes median pathogen log10 MIC, toxicity score and hemolysis
-score. It uses the declared 11-strain subset of the 34-strain APEX ensemble,
+score. It uses the 11-strain subset of the 34-strain APEX ensemble,
 a population of 500, and five search seeds: 42, 123, 2025, 271828 and 314159.
 Each search runs for up to 25 generations, with early stopping configured
 after five generations without sufficient hypervolume improvement.
@@ -81,8 +81,8 @@ Stability is an additional predicted filter, not a search objective.
 
 After the search, candidates from all ranks and seeds are pooled, screened
 with APEX-pathogen, ToxinPred3 and HemoPI2, and ranked again. Final selection
-retains one representative per 80%-identity/80%-coverage MMseqs2 cluster.
-Novelty is measured against the supplied references, not every peptide database.
+retains one representative per MMseqs2 cluster at 80% identity and 80% coverage.
+Novelty is measured against the supplied reference sequences.
 
 ## Running individual stages
 
@@ -103,8 +103,8 @@ amp-design rank-final --config configs/pipeline.yaml
 ```
 
 The preflight checks the scoring models and initial population before the
-search. Keep input files, models and other frozen settings unchanged when
-resuming. To continue an interrupted optimization after generation 10, set
+search. Resuming requires the same input files, models and search settings.
+To continue an interrupted optimization after generation 10, set
 `optimization.resume_generation: 11` in the same configuration and rerun the
 optimization command with the same output root.
 
@@ -131,7 +131,8 @@ Add `--include-external` to check downloaded assets as well.
 
 `configs/optimization.yaml` is a separate configuration for the bundled
 reference pool. It uses APEX-pathogen directly, three search seeds and
-100 generations; it is not the default full-pipeline configuration.
+100 generations. Its candidate tables are separate from the default pipeline
+outputs.
 
 ```bash
 amp-design check-optimize --config configs/optimization.yaml

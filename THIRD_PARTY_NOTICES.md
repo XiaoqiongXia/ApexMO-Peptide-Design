@@ -7,7 +7,9 @@
 - License: Creative Commons Attribution-NonCommercial 4.0 International
 - Runtime package: `flow-matching==1.0.10`
 
-This project uses the Flow Matching probability path, scheduler, solver, and model-wrapper APIs for non-commercial research. AMP-specific model and training code lives in this repository rather than modifying the external source tree.
+ApexMO uses the Flow Matching probability path, scheduler, solver and
+model-wrapper APIs for non-commercial research. The peptide model and training
+code are implemented in this repository.
 
 ## pymoo
 
@@ -16,7 +18,8 @@ This project uses the Flow Matching probability path, scheduler, solver, and mod
 - License: Apache License 2.0
 - Runtime package: `pymoo>=0.6.2,<0.7`
 
-pymoo provides non-dominated sorting and crowding-distance calculations for the Pareto-ranking phase.
+pymoo provides non-dominated sorting and crowding-distance calculations for
+Pareto ranking.
 
 ## Penn Software APEX
 
@@ -26,9 +29,10 @@ pymoo provides non-dominated sorting and crowding-distance calculations for the 
 - Local path: `external/apex`
 
 APEX supplies a 40-model ensemble that predicts MIC values for 34 bacterial strains.
-The AMP design integration preserves all strain-specific values and derives pathogen activity,
-commensal activity, selectivity, and ensemble uncertainty. Commercial use and redistribution to
-commercial third parties require separate permission from the Penn Center for Innovation.
+ApexMO keeps the predictions for each strain and calculates pathogen activity,
+commensal activity, selectivity and ensemble uncertainty. Commercial use and
+redistribution to commercial third parties require separate permission from
+the Penn Center for Innovation.
 
 ## APEX-pathogen
 
@@ -37,6 +41,6 @@ commercial third parties require separate permission from the Penn Center for In
 - License: MIT
 - Local path: `external/apex-pathogen`
 
-APEX-pathogen supplies an 8-model ensemble that predicts MIC values for 11 pathogens. The local
-adapter preserves all pathogen-specific ensemble mean MIC values and reports disagreement on the
-`log10(MIC)` scale together with a median pathogen activity score.
+APEX-pathogen supplies an 8-model ensemble that predicts MIC values for
+11 pathogens. The adapter reports each pathogen's mean MIC, ensemble
+disagreement on the `log10(MIC)` scale, and the median pathogen activity score.

@@ -1,1 +1,1 @@
-"""Datasets components for ApexMO."""
+"""Sequence validation, clustering and dataset splits."""

@@ -1,4 +1,4 @@
-"""Self-contained, resumable three-objective genetic Pareto optimization runtime."""
+"""Three-objective genetic Pareto search with checkpoints for resuming runs."""
 
 from __future__ import annotations
 

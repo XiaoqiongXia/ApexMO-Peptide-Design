@@ -1,4 +1,4 @@
-"""Public, configuration-driven AMP sampling and Pareto optimization commands."""
+"""Command-line tools for sampling, scoring and Pareto optimization."""
 
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ from amp_design.workflows.config import (
 
 
 def resolve_device(requested: str) -> torch.device:
-    """Resolve ``auto`` to CUDA when available, otherwise a portable CPU fallback."""
+    """Resolve ``auto`` to CUDA if available, otherwise CPU."""
 
     value = "cuda" if requested == "auto" and torch.cuda.is_available() else requested
     if value == "auto":

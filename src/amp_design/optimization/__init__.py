@@ -1,1 +1,1 @@
-"""Optimization components for ApexMO."""
+"""Search objectives, Pareto ranking and genetic operators."""

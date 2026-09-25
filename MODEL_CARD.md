@@ -34,10 +34,9 @@ same predictions and classification thresholds, without retraining the models:
 
 Both tables report average precision as AUPRC. The evaluation sets also differ
 in class balance: the positive fraction changes from 50.0% to 29.7% for toxicity
-and from 46.4% to 43.8% for hemolysis. These are evaluations on different samples,
-not scores from different model versions.
+and from 46.4% to 43.8% for hemolysis. Both evaluations use the same model weights.
 
-The exact values are available in
+Full results are in
 [`frozen_test_metrics.json`](models/safety/frozen_test_metrics.json) and
 [`dehomologized_test_metrics.json`](models/safety/dehomologized_test_metrics.json).
 Specificity is limited, particularly for hemolysis. These scores support
@@ -67,11 +66,10 @@ and 100 generations. Reference candidate tables correspond to that workflow.
 
 ## Interpretation
 
-All reported activity and safety values are model predictions. The released
-candidates have not been experimentally validated by this package, and
-predictions may be unreliable outside the models' training domains.
+All reported activity and safety values are model predictions. No experimental
+validation of the released candidates is included here. Predictions may be
+unreliable outside the models' training domains.
 
-The activity and safety models are not independent experimental assays.
 Synthesis feasibility, aggregation, proteolytic stability, immunogenicity and
 off-target effects require separate assessment. The stability score is
 exploratory and does not establish blood stability. This code is intended for

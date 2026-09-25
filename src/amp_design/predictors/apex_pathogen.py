@@ -1,4 +1,4 @@
-"""Reproducible, resumable scoring with the 8-model APEX-pathogen ensemble."""
+"""MIC scoring with the eight-model APEX-pathogen ensemble."""
 
 from __future__ import annotations
 
@@ -149,7 +149,7 @@ def finalize_pathogen_scores(
     max_sd = np.max(log_sd, axis=1)
     values["apex_pathogen_median_log10_mic_sd"] = median_sd
     values["apex_pathogen_max_log10_mic_sd"] = max_sd
-    # Backend-neutral aliases retained by the release feasibility and hard-filter contracts.
+    # Shared column names used by optimization and final filtering.
     values["apex_median_log10_mic_sd"] = median_sd
     values["apex_max_log10_mic_sd"] = max_sd
     return pd.DataFrame(values)

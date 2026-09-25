@@ -1,1 +1,1 @@
-"""Evaluation components for ApexMO."""
+"""Sequence validity, diversity and reference-set comparisons."""

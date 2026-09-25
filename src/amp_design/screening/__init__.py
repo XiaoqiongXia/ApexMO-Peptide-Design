@@ -1,1 +1,1 @@
-"""Screening components for ApexMO."""
+"""Candidate pooling, filtering and cluster selection."""

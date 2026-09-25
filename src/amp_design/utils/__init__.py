@@ -1,1 +1,1 @@
-"""Utils components for ApexMO."""
+"""Project paths, checkpoints and experiment tracking."""

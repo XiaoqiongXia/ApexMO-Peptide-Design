@@ -1,4 +1,4 @@
-"""Reproducible, resumable APEX MIC ensemble scoring."""
+"""APEX ensemble MIC scoring with per-model checkpoints."""
 
 from __future__ import annotations
 

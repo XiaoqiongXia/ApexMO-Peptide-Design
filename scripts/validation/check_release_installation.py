@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate release configuration and external runtime contracts without inference."""
+"""Check configuration files and external tools without running model inference."""
 
 from __future__ import annotations
 

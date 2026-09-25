@@ -1,7 +1,6 @@
-"""Deterministic sequence operators for constrained genetic Pareto search.
+"""Sequence mutation, crossover and constrained NSGA-II selection.
 
-This module intentionally has no model-inference dependencies so the frozen
-operators and selection contract can be unit tested in a lightweight runtime.
+Scoring is handled separately; this module does not load prediction models.
 """
 
 from __future__ import annotations
@@ -71,7 +70,7 @@ def mutate_sequence(
     rng: np.random.Generator,
     frequencies: Sequence[float],
 ) -> tuple[str, dict[str, Any]]:
-    """Apply the frozen one-event mutation contract.
+    """Apply one substitution, insertion or deletion.
 
     Insertion at length 30 and deletion at length 10 are converted directly to
     substitution while retaining the original draw in ``raw_operator``.
@@ -464,7 +463,7 @@ def generate_offspring(
 
 
 def survivor_order(frame: pd.DataFrame) -> list[int]:
-    """Return the frozen constrained NSGA-II traversal order."""
+    """Return the constrained NSGA-II selection order."""
 
     return sorted(range(len(frame)), key=lambda index: _comparison_key(frame.iloc[index]))
 

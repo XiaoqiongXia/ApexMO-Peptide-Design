@@ -1,4 +1,4 @@
-"""AMP data validation, MMseqs2 clustering, and leakage-safe splitting."""
+"""Sequence validation, MMseqs2 clustering, and cluster-based dataset splits."""
 
 from __future__ import annotations
 
@@ -66,7 +66,7 @@ def load_and_validate_amp_csv(
     max_length: int = 64,
     require_positive_prior: bool = True,
 ) -> tuple[pd.DataFrame, ValidationSummary]:
-    """Load the AMP CSV and enforce the generator's input contract."""
+    """Load the AMP CSV and check its columns and sequences."""
 
     path = path.resolve()
     if not path.is_file():
@@ -168,7 +168,7 @@ def mmseqs_cluster_command(
     threads: int,
     min_sequence_identity: float = 0.67,
 ) -> list[str]:
-    """Build the reviewed short-peptide-sensitive MMseqs2 command."""
+    """Build the MMseqs2 clustering command for short peptides."""
 
     return [
         *mmseqs_command,
@@ -270,7 +270,7 @@ def read_cluster_map(cluster_tsv: Path, expected_ids: Iterable[str]) -> pd.DataF
 
 
 def audit_clusters(frame: pd.DataFrame) -> dict[str, Any]:
-    """Return non-sensitive cluster-size and length diagnostics."""
+    """Summarize cluster sizes and sequence lengths."""
 
     sizes = frame.groupby("cluster_id", sort=True).size().sort_values()
     singleton_clusters = int((sizes == 1).sum())

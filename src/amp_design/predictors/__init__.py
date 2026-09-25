@@ -1,1 +1,1 @@
-"""Predictors components for ApexMO."""
+"""Activity, toxicity and hemolysis scoring."""

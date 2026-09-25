@@ -1,4 +1,4 @@
-"""End-to-end release pipeline from sampling shards to hard-gated peptides."""
+"""Pipeline stages for sampling, scoring, optimization and final filtering."""
 
 from __future__ import annotations
 
@@ -114,8 +114,7 @@ def _filter_known_amp_candidates(
             raise RuntimeError(
                 f"Known-AMP MMseqs2 search failed: {(completed.stderr or completed.stdout)[-2000:]}"
             )
-    # MMseqs2 normally creates an empty result file when there are no hits, but
-    # keep the output contract deterministic across MMseqs2 versions/wrappers.
+    # Downstream readers expect a result file even when there are no hits.
     hits_path.touch(exist_ok=True)
     matched: set[str] = set()
     if hits_path.is_file() and hits_path.stat().st_size:
@@ -547,7 +546,7 @@ def hard_filter_candidates(
     pipeline: PipelineConfig,
     optimization: OptimizationConfig,
 ) -> dict[str, object]:
-    """Apply declared hard gates and export audited CSV and FASTA outputs."""
+    """Apply the configured filters and export CSV and FASTA files."""
 
     completion = pipeline.hard_filter_dir / "hard_filter_manifest.json"
     _require_new(completion)

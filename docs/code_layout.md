@@ -1,70 +1,52 @@
-# Functional code layout
+# Code layout
 
-Implementation code is organized by responsibility. Existing console-command names,
-Python import paths and top-level script commands remain available. Old source
-modules are small aliases to the canonical module object, so imports, monkeypatches
-and historical pickle class references resolve to the same implementation.
+Python modules are grouped by function. Setup and command-line scripts live
+under `scripts/`.
 
 ```text
 src/amp_design/
-  datasets/       preparation.py
-  generation/     model.py, tokenizer.py, flow_matching.py, samplers.py,
-                  training.py, sampling.py, sharded_sampling.py
-  predictors/     activity.py, apex.py, apex_pathogen.py, safety.py
-  optimization/   objectives.py, pareto.py, genetic.py, search.py
-  screening/      finalization.py
-  evaluation/     sequence_metrics.py
-  workflows/      config.py, cli.py, release.py, publication.py
-  utils/          paths.py, tracking.py
-  templates/      packaged YAML configuration templates
-  *.py            legacy import/command compatibility aliases
+  datasets/       data preparation and train/validation splits
+  generation/     model, training and sampling
+  predictors/     activity and safety scoring
+  optimization/   objectives, Pareto ranking and genetic search
+  screening/      candidate pooling and cluster selection
+  evaluation/     sequence metrics
+  workflows/      configuration, CLI and pipeline stages
+  utils/          paths, checkpoints and experiment tracking
+  templates/      packaged YAML configurations
 
 scripts/
-  setup/          environment bootstrap and external asset setup
-  pipeline/       full-workflow launcher
-  scoring/        ToxinPred3 and HemoPI2 subprocess adapters
-  training/       server scorer-training sources and provenance records
-  validation/     asset verification and installation/smoke checks
-  *.py, *.sh      legacy command forwarders
+  setup/          environment and model installation
+  pipeline/       full workflow
+  scoring/        ToxinPred3 and HemoPI2 adapters
+  training/       toxicity, hemolysis and stability training sources
+  validation/     file checks and installation tests
 ```
 
-## Where changes belong
+For generator training, see `generation/training.py`. Predictor training has
+separate data requirements and version notes in
+[`scripts/training/README.md`](../scripts/training/README.md).
 
-- Put reusable logic in the appropriate `src/amp_design/` functional package.
-- Put environment setup, process launchers and checks in the corresponding `scripts/` directory.
-- Edit the canonical implementation, not its compatibility alias. There is only one copy of each implementation.
-- `generation/training.py` trains the generative prior. It does not train the toxicity, hemolysis or stability predictors.
-- `predictors/` contains scorer inference and aggregation. Scorer-training sources are now in [`scripts/training/`](../scripts/training/README.md). Only their project-root lookup was adjusted for the new folder depth. The server safety script differs from the hash recorded with the released models, so exact weight reproduction remains unverified.
+## Older paths
 
-## Commands
+Top-level modules such as `amp_design.training` and scripts such as
+`scripts/bootstrap.sh` forward to the locations above. Existing imports and
+commands still work. Edit the implementation in its subdirectory, rather than
+the forwarding file. [module_moves.json](module_moves.json) lists each mapping.
 
-Recommended paths:
+For example:
 
-```bash
-bash scripts/setup/bootstrap.sh
-bash scripts/pipeline/run_full_pipeline.sh
-bash scripts/validation/run_smoke_test.sh
-python scripts/validation/verify_release_assets.py
-amp-train --cfg job
-amp-design --help
-```
+| Older command | Current command |
+| --- | --- |
+| `bash scripts/bootstrap.sh` | `bash scripts/setup/bootstrap.sh` |
+| `bash scripts/run_full_pipeline.sh` | `bash scripts/pipeline/run_full_pipeline.sh` |
+| `python scripts/verify_release_assets.py` | `python scripts/validation/verify_release_assets.py` |
 
-Legacy commands such as `bash scripts/bootstrap.sh`, `python scripts/verify_release_assets.py`
-and `python -m amp_design.release_cli --help` still forward to the organized code.
-The exact old-to-new mapping is in [module_moves.json](module_moves.json).
+Installed commands such as `amp-train` and `amp-design` keep their names.
 
-## Scope and reproducibility
+## Resuming older runs
 
-This change reorganizes existing implementations and updates imports, command entry
-points, resource paths, code-hash provenance paths, configuration runner paths and
-documentation. It does not change model parameters, objective calculations, search
-operators, screening thresholds or saved scientific results. Tests continue to cover
-the legacy imports and add checks of canonical entry points.
-
-Source locations and source-file hashes necessarily change. Existing runs whose
-resume manifests bind old code hashes should continue to use the original code
-revision; do not overwrite their recorded hashes to force a resume. No server
-results or previously sealed submission artifacts are changed by this refactor.
-
-Git LFS weights remain LFS-managed. This local refactor does not download or replace
-them; use the existing setup instructions to obtain model assets.
+Resume records include hashes of the source files. Use the original code
+revision when continuing an existing run: moving or editing a file changes its
+hash, even when the algorithm is unchanged. Keep the hashes in the run's
+manifest so that these checks can detect a changed environment.

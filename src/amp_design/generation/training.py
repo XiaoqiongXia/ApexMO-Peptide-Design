@@ -1,4 +1,4 @@
-"""Hydra entry point for reproducible length-conditioned AMP training."""
+"""Train the length-conditioned sequence generator using a Hydra configuration."""
 
 from __future__ import annotations
 

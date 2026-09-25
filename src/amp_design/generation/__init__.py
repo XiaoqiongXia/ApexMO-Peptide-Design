@@ -1,1 +1,1 @@
-"""Generation components for ApexMO."""
+"""Sequence models, training and sampling."""

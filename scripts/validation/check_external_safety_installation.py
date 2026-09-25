@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run real one-batch HemoPI2 and ToxinPred3 inference as an installation smoke test."""
+"""Check the installation by running one batch through HemoPI2 and ToxinPred3."""
 
 from __future__ import annotations
 

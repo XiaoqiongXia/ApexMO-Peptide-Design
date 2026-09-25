@@ -1,4 +1,4 @@
-"""Validated configuration objects for the public sampling and optimization CLI."""
+"""Configuration parsing and validation for sampling and optimization."""
 
 from __future__ import annotations
 

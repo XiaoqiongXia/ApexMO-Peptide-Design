@@ -1,4 +1,4 @@
-"""Resumable exact-length production sampling for one trained AMP checkpoint."""
+"""Sample fixed-length sequences in resumable shards from one checkpoint."""
 
 from __future__ import annotations
 

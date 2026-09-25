@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Load a released Flow Matching checkpoint and generate a tiny validated batch."""
+"""Check that a generator checkpoint loads and produces valid sequences."""
 
 from __future__ import annotations
 

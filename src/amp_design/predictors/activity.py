@@ -1,4 +1,4 @@
-"""Backend-neutral activity scoring and target aggregation contracts."""
+"""Activity scoring and aggregation across selected target strains."""
 
 from __future__ import annotations
 
@@ -123,9 +123,8 @@ def aggregate_activity_targets(
     }
     result = scores.copy()
     result[output_column] = reducers[aggregation](log_mic)
-    # These backend-neutral aliases are consumed by the optimizer's uncertainty
-    # feasibility contract.  When targets are selected, they must describe the
-    # same target panel as the activity objective rather than all backend outputs.
+    # The optimizer reads these columns for its uncertainty limits. Use the
+    # same target strains as the activity objective when a subset is selected.
     result["apex_median_log10_mic_sd"] = np.median(uncertainty, axis=1)
     result["apex_max_log10_mic_sd"] = np.max(uncertainty, axis=1)
     result["activity_target_count"] = len(targets)
