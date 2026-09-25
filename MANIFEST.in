@@ -9,3 +9,4 @@ include docs/code_layout.md
 include docs/module_moves.json
 recursive-include scripts *.py *.sh
 recursive-include scripts/training *.md *.json
+include docs/predictor_training.md

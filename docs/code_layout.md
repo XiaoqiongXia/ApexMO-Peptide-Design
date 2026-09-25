@@ -24,8 +24,7 @@ scripts/
 ```
 
 For generator training, see `generation/training.py`. Predictor training has
-separate data requirements and version notes in
-[`scripts/training/README.md`](../scripts/training/README.md).
+separate [training requirements](predictor_training.md).
 
 ## Older paths
 

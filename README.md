@@ -1,17 +1,13 @@
 # ApexMO
 
-ApexMO generates antimicrobial peptide candidates with a length-conditioned
-flow-matching model, then searches for sequences with lower predicted MIC,
-toxicity and hemolysis. This repository contains three trained generators,
-scoring models, and the code for training, sampling and candidate selection.
+Antimicrobial peptide generation with discrete flow matching and multi-objective
+optimization of predicted activity, toxicity and hemolysis.
 
-![ApexMO workflow and sequence analysis](docs/images/Fig_1.png)
-
-*Model training, peptide generation, Pareto optimization and sequence analysis.*
+![ApexMO workflow](docs/images/Fig_1.png)
 
 ## Installation
 
-On Linux, install Conda, Git LFS, curl and unzip, then run:
+Requires Linux, Conda, Git LFS, curl and unzip.
 
 ```bash
 git clone https://github.com/XiaoqiongXia/ApexMO-Peptide-Design.git
@@ -19,61 +15,34 @@ cd ApexMO-Peptide-Design
 bash scripts/setup/bootstrap.sh
 ```
 
-Setup creates the `amp_flow` and `amp_toxinpred3` environments, downloads model
-weights and checks that the models load and run. Rerun the same command if a
-download is interrupted. The default pipeline uses CUDA when available and
-otherwise runs on CPU.
-
 ## Run
 
-Check the installation with a small example:
+Installation check with relaxed thresholds:
 
 ```bash
 bash scripts/pipeline/run_full_pipeline.sh configs/smoke_e2e.yaml
 ```
 
-The example uses relaxed thresholds. For candidate selection, review
-[`configs/pipeline.yaml`](configs/pipeline.yaml) and run:
+Full workflow using [`configs/pipeline.yaml`](configs/pipeline.yaml):
 
 ```bash
 bash scripts/pipeline/run_full_pipeline.sh
 ```
 
-The default workflow samples peptides of 10–30 residues and optimizes their
-predicted activity, toxicity and hemolysis. APEX scores activity during the
-search; APEX-pathogen, ToxinPred3 and HemoPI2 screen the resulting candidates.
-Final CSV, Parquet and FASTA files are saved in `outputs/pipeline/final/04_final/`.
-
-See the [usage guide](docs/usage.md) for individual stages, output files and
-resuming interrupted runs. The [model notes](MODEL_CARD.md) describe the search
-settings, evaluation results and prediction limits. Candidate peptides require
-experimental validation.
+Results: `outputs/pipeline/final/04_final/` (CSV, Parquet and FASTA).
 
 ## Training
 
-Generator training is in
-[`src/amp_design/generation/training.py`](src/amp_design/generation/training.py).
-Toxicity, hemolysis and stability training scripts are in
-[`scripts/training/`](scripts/training/README.md). That directory lists the
-required data, known source issues and unresolved differences between the
-training scripts and the versions recorded with the released weights.
+- [Sequence generator](src/amp_design/generation/training.py)
+- [Toxicity, hemolysis and stability predictors](scripts/training/README.md)
 
-## Repository
+## Documentation
 
-| Directory | Contents |
-| --- | --- |
-| [`src/amp_design/`](src/amp_design/) | Generation, scoring, optimization and screening |
-| [`scripts/`](scripts/) | Setup, workflow runners, predictor training and installation checks |
-| [`configs/`](configs/) | Training, sampling and optimization settings |
-| [`models/`](models/) | Generator checkpoints and scoring models |
-| [`assets/`](assets/) | Generator training sequences and reference sets |
-| [`results/reference_candidates/`](results/reference_candidates/) | Candidate tables from the reference optimization run |
-| [`tests/`](tests/) | Unit and integration tests |
-
-The [code layout](docs/code_layout.md) lists the modules by function and maps
-the older import and script paths to their current locations.
+- [Usage and configuration](docs/usage.md)
+- [Models and evaluation results](MODEL_CARD.md)
+- [Code layout](docs/code_layout.md)
 
 ## License
 
-A project license has not yet been selected; see [license status](LICENSE_PENDING.md).
-External code and models have their own [license terms](THIRD_PARTY_NOTICES.md).
+Project license pending; see [license status](LICENSE_PENDING.md) and
+[third-party terms](THIRD_PARTY_NOTICES.md).

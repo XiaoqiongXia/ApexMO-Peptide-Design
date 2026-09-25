@@ -22,8 +22,8 @@
     },
     "MANIFEST.in": {
       "git_lfs": false,
-      "sha256": "e6805f35888f7720a984dc73d9d4ebb07de035d4b456342215cb84a879aff319",
-      "size_bytes": 347
+      "sha256": "d83ff16474e7a4ae1a5599adf07d62a9f3aaa31e561d26b279f30e39a28bf727",
+      "size_bytes": 382
     },
     "MODEL_CARD.md": {
       "git_lfs": false,
@@ -32,8 +32,8 @@
     },
     "README.md": {
       "git_lfs": false,
-      "sha256": "6fcefe95c43eea61005ee37d7566efd79981f535a013668f8e7c83276593bd27",
-      "size_bytes": 3186
+      "sha256": "dbd7bf92f54e5a2b8ab9125aba571c449463a166ee4a11f44fc5c2a475ea3010",
+      "size_bytes": 1157
     },
     "THIRD_PARTY_NOTICES.md": {
       "git_lfs": false,
@@ -97,8 +97,8 @@
     },
     "docs/code_layout.md": {
       "git_lfs": false,
-      "sha256": "3d07e237b725cd3572ccca049716a1ff4837ed66390560d78c7ae87bad971999",
-      "size_bytes": 2101
+      "sha256": "70ed36bfe03db61cffd188e09d03bcd921d468c354884a0b1ddad416efd3f24f",
+      "size_bytes": 2047
     },
     "docs/images/Fig_1.png": {
       "git_lfs": false,
@@ -109,6 +109,11 @@
       "git_lfs": false,
       "sha256": "305036669c3a14e329c9d674541993988d675f395edf394390eb704aed3b4943",
       "size_bytes": 1721
+    },
+    "docs/predictor_training.md": {
+      "git_lfs": false,
+      "sha256": "92650897d78aee315bbe96d4eebd0f34822359623344f32888303378c64b8c20",
+      "size_bytes": 3153
     },
     "docs/usage.md": {
       "git_lfs": false,
@@ -302,8 +307,8 @@
     },
     "scripts/training/README.md": {
       "git_lfs": false,
-      "sha256": "97ae94d2add0153c8f565cd51c42d9b017f74a18be03e0a12b1809371aed3f2c",
-      "size_bytes": 3742
+      "sha256": "2ebc096f63eeca6b69694cdcfd7dbb1af64ec3cec933417d662515cbdcd5a995",
+      "size_bytes": 705
     },
     "scripts/training/source_manifest.json": {
       "git_lfs": false,
