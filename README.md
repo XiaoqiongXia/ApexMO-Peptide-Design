@@ -19,9 +19,9 @@ comparisons.*
 Use a Linux environment with Conda, Git LFS, curl and unzip installed.
 
 ```bash
-git clone https://github.com/XiaoqiongXia/ApexMO_amp_design.git
-cd ApexMO_amp_design
-bash scripts/bootstrap.sh
+git clone https://github.com/XiaoqiongXia/ApexMO-Peptide-Design.git
+cd ApexMO-Peptide-Design
+bash scripts/setup/bootstrap.sh
 ```
 
 The setup script creates the `amp_flow` and `amp_toxinpred3` environments,
@@ -34,14 +34,14 @@ the default pipeline also supports CPU execution.
 Start with the small example to check the installation:
 
 ```bash
-bash scripts/run_full_pipeline.sh configs/smoke_e2e.yaml
+bash scripts/pipeline/run_full_pipeline.sh configs/smoke_e2e.yaml
 ```
 
 This example uses relaxed thresholds to exercise the code. For candidate
 selection, review [`configs/pipeline.yaml`](configs/pipeline.yaml) and run:
 
 ```bash
-bash scripts/run_full_pipeline.sh
+bash scripts/pipeline/run_full_pipeline.sh
 ```
 
 The default run samples 10–30-residue peptides from three generators and
@@ -56,6 +56,20 @@ cluster at 80% identity and 80% coverage.
 
 For sampling only, stage-by-stage execution and resuming a run, see the
 [usage guide](docs/usage.md).
+
+## Code organization
+
+Reusable implementation code is grouped under `datasets`, `generation`,
+`predictors`, `optimization`, `screening`, `evaluation`, `workflows` and `utils`.
+Operational scripts are grouped under `setup`, `pipeline`, `scoring`, `training` and
+`validation`. See the [functional layout and migration guide](docs/code_layout.md).
+Existing top-level modules and script paths remain compatibility entry points.
+
+Generator training is in `src/amp_design/generation/training.py`. Server training
+scripts for toxicity, hemolysis and stability are included in
+[`scripts/training/`](scripts/training/README.md), with source hashes and input
+requirements. Their exact correspondence to the released weights is not yet
+verified; inclusion of these scripts does not establish full training reproducibility.
 
 ## Code and data
 

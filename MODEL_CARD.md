@@ -50,7 +50,7 @@ ensemble provides a further activity screen after optimization. ToxinPred3
 and HemoPI2 provide external toxicity and hemolysis predictions.
 
 The ESM encoder is `facebook/esm2_t30_150M_UR50D`. External weights are
-retrieved by `scripts/setup_external_assets.sh`; versions and hashes are
+retrieved by `scripts/setup/setup_external_assets.sh`; versions and hashes are
 recorded in the release manifests.
 
 ## Search settings

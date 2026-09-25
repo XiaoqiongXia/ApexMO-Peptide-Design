@@ -9,13 +9,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_bootstrap_shell_entrypoints_are_syntactically_valid() -> None:
     scripts = [
-        ROOT / "scripts/bootstrap.sh",
-        ROOT / "scripts/run_smoke_test.sh",
-        ROOT / "scripts/run_full_pipeline.sh",
-        ROOT / "github_release_template/scripts/bootstrap.sh",
-        ROOT / "github_release_template/scripts/setup_external_assets.sh",
-        ROOT / "github_release_template/scripts/run_smoke_test.sh",
-        ROOT / "github_release_template/scripts/run_full_pipeline.sh",
+        ROOT / "scripts/setup/bootstrap.sh",
+        ROOT / "scripts/validation/run_smoke_test.sh",
+        ROOT / "scripts/pipeline/run_full_pipeline.sh",
+        ROOT / "github_release_template/scripts/setup/bootstrap.sh",
+        ROOT / "github_release_template/scripts/setup/setup_external_assets.sh",
+        ROOT / "github_release_template/scripts/validation/run_smoke_test.sh",
+        ROOT / "github_release_template/scripts/pipeline/run_full_pipeline.sh",
     ]
 
     existing_scripts = (path for path in scripts if path.exists())
@@ -33,8 +33,8 @@ def test_toxinpred3_environment_contract_is_frozen() -> None:
 
 def test_external_asset_download_supports_resume() -> None:
     candidates = [
-        ROOT / "github_release_template/scripts/setup_external_assets.sh",
-        ROOT / "scripts/setup_external_assets.sh",
+        ROOT / "github_release_template/scripts/setup/setup_external_assets.sh",
+        ROOT / "scripts/setup/setup_external_assets.sh",
     ]
     setup_script = next(path for path in candidates if path.exists())
     text = setup_script.read_text(encoding="utf-8")
@@ -46,8 +46,8 @@ def test_external_asset_download_supports_resume() -> None:
 
 def test_bootstrap_rejects_incomplete_conda_environment_prefixes() -> None:
     candidates = [
-        ROOT / "github_release_template/scripts/bootstrap.sh",
-        ROOT / "scripts/bootstrap.sh",
+        ROOT / "github_release_template/scripts/setup/bootstrap.sh",
+        ROOT / "scripts/setup/bootstrap.sh",
     ]
     bootstrap = next(path for path in candidates if path.exists())
     text = bootstrap.read_text(encoding="utf-8")
@@ -85,7 +85,7 @@ def test_public_pipeline_uses_runtime_environment_not_personal_path() -> None:
 
 
 def test_toxinpred3_singleton_chunk_is_padded_only_for_inference() -> None:
-    path = ROOT / "scripts/score_toxinpred3_chunked.py"
+    path = ROOT / "scripts/scoring/score_toxinpred3_chunked.py"
     spec = importlib.util.spec_from_file_location("score_toxinpred3_chunked", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)

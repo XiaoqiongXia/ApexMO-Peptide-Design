@@ -1,0 +1,39 @@
+{
+  "modules": {
+    "data": "datasets.preparation",
+    "model": "generation.model",
+    "flow_matching": "generation.flow_matching",
+    "tokenizer": "generation.tokenizer",
+    "samplers": "generation.samplers",
+    "training": "generation.training",
+    "generate": "generation.sampling",
+    "production_sampling": "generation.sharded_sampling",
+    "apex": "predictors.apex",
+    "apex_pathogen": "predictors.apex_pathogen",
+    "activity_scoring": "predictors.activity",
+    "external_safety": "predictors.safety",
+    "objectives": "optimization.objectives",
+    "pareto": "optimization.pareto",
+    "genetic_pareto": "optimization.genetic",
+    "release_optimization": "optimization.search",
+    "pareto_finalization": "screening.finalization",
+    "evaluate": "evaluation.sequence_metrics",
+    "release_cli": "workflows.cli",
+    "release_config": "workflows.config",
+    "release_pipeline": "workflows.release",
+    "publication_pipeline": "workflows.publication",
+    "tracking": "utils.tracking"
+  },
+  "scripts": {
+    "bootstrap.sh": "setup/bootstrap.sh",
+    "setup_external_assets.sh": "setup/setup_external_assets.sh",
+    "run_full_pipeline.sh": "pipeline/run_full_pipeline.sh",
+    "run_smoke_test.sh": "validation/run_smoke_test.sh",
+    "check_external_safety_installation.py": "validation/check_external_safety_installation.py",
+    "check_release_installation.py": "validation/check_release_installation.py",
+    "check_sampling_inference.py": "validation/check_sampling_inference.py",
+    "verify_release_assets.py": "validation/verify_release_assets.py",
+    "run_hemopi2_fixed.py": "scoring/run_hemopi2_fixed.py",
+    "score_toxinpred3_chunked.py": "scoring/score_toxinpred3_chunked.py"
+  }
+}

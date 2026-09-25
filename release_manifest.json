@@ -7,8 +7,8 @@
     },
     ".github/workflows/ci.yml": {
       "git_lfs": false,
-      "sha256": "649c84cbc03ba21faece5f33f8b9818e43e6b4eb79e79057053f870dd33a7b7c",
-      "size_bytes": 1161
+      "sha256": "854f8eba0cd7d211440910ff37d07ddc4dfed925aab6968f6a6f95053ac7024b",
+      "size_bytes": 1172
     },
     ".gitignore": {
       "git_lfs": false,
@@ -22,18 +22,18 @@
     },
     "MANIFEST.in": {
       "git_lfs": false,
-      "sha256": "14a43c9d119cae5dfde332aeadebb7bfe7ba1eef19a77bd4fb26c67044bd6575",
-      "size_bytes": 205
+      "sha256": "e6805f35888f7720a984dc73d9d4ebb07de035d4b456342215cb84a879aff319",
+      "size_bytes": 347
     },
     "MODEL_CARD.md": {
       "git_lfs": false,
-      "sha256": "a6f4a7be6aef6d7b2ee7fc0cea0d3c3cf63963c44bbcb191e92070787d1a7f6b",
-      "size_bytes": 4144
+      "sha256": "8bfc7bb912994c675c1e3a7910cb96adcd45c5e30ea6ef01eedd70468b9da642",
+      "size_bytes": 4150
     },
     "README.md": {
       "git_lfs": false,
-      "sha256": "1ffcce013db54b530e5e07aa3b37f3f62b1b8350a810570087cd3b42b75c8cc5",
-      "size_bytes": 3107
+      "sha256": "720586c859e795ecd1976191b99a3526dfc6fc293e4e0f00dd0528db337769a4",
+      "size_bytes": 3952
     },
     "THIRD_PARTY_NOTICES.md": {
       "git_lfs": false,
@@ -72,8 +72,8 @@
     },
     "configs/pipeline.yaml": {
       "git_lfs": false,
-      "sha256": "1ed0e81805d10a2808dccb96cace4081dcf6375c77651b5d74bc7440a64705c1",
-      "size_bytes": 4543
+      "sha256": "691db4f5adf72f4936392088fce9752754eea4749ff6e162a48b21fe3cb19d14",
+      "size_bytes": 4559
     },
     "configs/sampling.yaml": {
       "git_lfs": false,
@@ -82,8 +82,8 @@
     },
     "configs/smoke_e2e.yaml": {
       "git_lfs": false,
-      "sha256": "210599cd11ac20641ab151f5408140cbdd0052f5f54c820082fc43d6ebe38a04",
-      "size_bytes": 4525
+      "sha256": "570d140cb9916d466c52aa8451a0364ec243d738bef7134321412fa82cbc058c",
+      "size_bytes": 4541
     },
     "configs/smoke_scorer_gate_v1.json": {
       "git_lfs": false,
@@ -95,15 +95,25 @@
       "sha256": "76a6a68cbc5d7a170cabd2fceb7fc8c10a7fbf0e52631ac84a77ad7686e6d37e",
       "size_bytes": 926
     },
+    "docs/code_layout.md": {
+      "git_lfs": false,
+      "sha256": "8fdedef87f6a6b50668887964d38e28403819419eb7697c7d5ed503b14f2a03e",
+      "size_bytes": 3524
+    },
     "docs/images/Fig_1.png": {
       "git_lfs": false,
       "sha256": "242a9faac7e3e91854051acee2fae13935366650c75a237483517e597b06bf04",
       "size_bytes": 1050813
     },
+    "docs/module_moves.json": {
+      "git_lfs": false,
+      "sha256": "305036669c3a14e329c9d674541993988d675f395edf394390eb704aed3b4943",
+      "size_bytes": 1721
+    },
     "docs/usage.md": {
       "git_lfs": false,
-      "sha256": "9bbf5c9ff9b7b6d32f98892bebdb4f01e4231f3b4b6db34f63183419f8777766",
-      "size_bytes": 6103
+      "sha256": "ef742c48d44a8ff5008143e61f92828dd071906d90fab058bba60e00882c5e5f",
+      "size_bytes": 6161
     },
     "environment-toxinpred3.yml": {
       "git_lfs": false,
@@ -202,8 +212,8 @@
     },
     "pyproject.toml": {
       "git_lfs": false,
-      "sha256": "7ce3ac3c3567f019ab295fafc76ef8558aa17d0cbde8408409373fd116625138",
-      "size_bytes": 1444
+      "sha256": "e4a4fefa097a9dbfa5f22c7a4e41f04a1987b627b956c007a02a9d0abc3887f2",
+      "size_bytes": 1546
     },
     "results/reference_candidates/combined_rank0_diverse.csv": {
       "git_lfs": false,
@@ -222,53 +232,128 @@
     },
     "scripts/bootstrap.sh": {
       "git_lfs": false,
-      "sha256": "f96cfbfd1d1f09d11ad73b2df86a2f042fa9159039992f18aa65bd3edd094d52",
-      "size_bytes": 2912
+      "sha256": "09f6c8a796a37e695b20c9e80c74778cbddd4ade3a88cc791c20c0769dc13352",
+      "size_bytes": 193
     },
     "scripts/check_external_safety_installation.py": {
       "git_lfs": false,
-      "sha256": "d8fbae95b9f2c658a946ddf1a152b5a651909eb836e35dd20e2cbbd7ecd883a1",
-      "size_bytes": 1876
+      "sha256": "79c523672fc56f5f28d543882b4bce0cbfd8932f2758b6b6a9919b8ce0be31b6",
+      "size_bytes": 478
     },
     "scripts/check_release_installation.py": {
       "git_lfs": false,
-      "sha256": "475b5dd8efddd81333043e000e7aafbb937b775b41ecd60aa6e61705395b54ca",
-      "size_bytes": 1364
+      "sha256": "ae5fd5d172af46a10fbd7cec185eea34f9bba5a3eb1a686853ac029524439fa8",
+      "size_bytes": 462
     },
     "scripts/check_sampling_inference.py": {
       "git_lfs": false,
-      "sha256": "686d66d77172949286b51f027f4114df4355a7ad95bba13b7851b5b514386ad3",
-      "size_bytes": 1797
+      "sha256": "7d0fda7d8c66afd6ef430358eb60aa1d67c46f651501002400c8b9d9327205a3",
+      "size_bytes": 458
+    },
+    "scripts/pipeline/run_full_pipeline.sh": {
+      "git_lfs": false,
+      "sha256": "a1bfef604e9d6e079bbc063775ac179c315af062de53e3c0f3a3bd71a724dce1",
+      "size_bytes": 836
     },
     "scripts/run_full_pipeline.sh": {
       "git_lfs": false,
-      "sha256": "150da88a8aa5214b9c70f462a170fbc497c54180adf4a55c737e2a1a001e13fb",
-      "size_bytes": 827
+      "sha256": "ffca50559ce4380a64d9c7b2b1bc868fed9908b050ea37b77fada1f79c697b4c",
+      "size_bytes": 215
     },
     "scripts/run_hemopi2_fixed.py": {
+      "git_lfs": false,
+      "sha256": "d6aa099f76bd2e497879bb8f965bc7aa248f63dcf8332ea9e3d467f645243a29",
+      "size_bytes": 438
+    },
+    "scripts/run_smoke_test.sh": {
+      "git_lfs": false,
+      "sha256": "700d41fd10d5a7f77a62b7207d4f66a87aca84b313b8d2bf73898d775a98bf6d",
+      "size_bytes": 213
+    },
+    "scripts/score_toxinpred3_chunked.py": {
+      "git_lfs": false,
+      "sha256": "6b7702f2a52de6eefbfebd2d97342ba0312db28aad94b796966f654496e8fb8d",
+      "size_bytes": 452
+    },
+    "scripts/scoring/run_hemopi2_fixed.py": {
       "git_lfs": false,
       "sha256": "9e43af9284fb85cefc70b78779d2bf6dc411326fe6da3175c78728402860c83c",
       "size_bytes": 3381
     },
-    "scripts/run_smoke_test.sh": {
-      "git_lfs": false,
-      "sha256": "c9db23cf3eecb59577fb18ff66bc70ba9c22f23a0c332dc02f91579c4dc07977",
-      "size_bytes": 2585
-    },
-    "scripts/score_toxinpred3_chunked.py": {
+    "scripts/scoring/score_toxinpred3_chunked.py": {
       "git_lfs": false,
       "sha256": "2d39910c1fa8bed2e663134db9859684a6086c02fa618493959253fed24ec9ba",
       "size_bytes": 3926
     },
+    "scripts/setup/bootstrap.sh": {
+      "git_lfs": false,
+      "sha256": "7649a85850bc9b4b7a3657154c5004f38a0dde375f3e63e4291a9ba973138051",
+      "size_bytes": 2947
+    },
+    "scripts/setup/setup_external_assets.sh": {
+      "git_lfs": false,
+      "sha256": "de11f698b2ccff39c0bc35aa0fd907b213941d6e0b05503fd69f1458af453720",
+      "size_bytes": 3604
+    },
     "scripts/setup_external_assets.sh": {
       "git_lfs": false,
-      "sha256": "ce412139a47b491b4045005d72699ef70ccc9ec13db8dcd12558859a606e8445",
-      "size_bytes": 3579
+      "sha256": "d612b2b3955f2fddb244afaac1c1e2cc33eda9199f3ad355feb6f58a88668d9f",
+      "size_bytes": 217
+    },
+    "scripts/training/README.md": {
+      "git_lfs": false,
+      "sha256": "849cce22b446e4e2b790a362fab5e229015e69994a1940df5c204b2e4a656f78",
+      "size_bytes": 4783
+    },
+    "scripts/training/source_manifest.json": {
+      "git_lfs": false,
+      "sha256": "22c59a65e2943dfa26325844378e4cf6d56d5f233d67d3156ebb8fc8cb8df665",
+      "size_bytes": 2553
+    },
+    "scripts/training/train_custom_scorers.py": {
+      "git_lfs": false,
+      "sha256": "2cffe6927123168c8e040dcb928e2bb8f03cb1621644c38086eed8cdb2c7832c",
+      "size_bytes": 5293
+    },
+    "scripts/training/train_custom_scorers_nested_v1_1.py": {
+      "git_lfs": false,
+      "sha256": "a25463e8c0a29aa8a410d43f806feb1c5e56e396827e6aff8a3393bdd731ccdf",
+      "size_bytes": 8511
+    },
+    "scripts/training/train_stability_classifier.py": {
+      "git_lfs": false,
+      "sha256": "964b66c03214160f117324b709096ec7bcbdf95aca15b2b29d8d889a7110f975",
+      "size_bytes": 6703
+    },
+    "scripts/validation/check_external_safety_installation.py": {
+      "git_lfs": false,
+      "sha256": "7dbda2188028dc5dc9181cb2581ab024e7556515d2a4d68ac578a90eecbb7c85",
+      "size_bytes": 1880
+    },
+    "scripts/validation/check_release_installation.py": {
+      "git_lfs": false,
+      "sha256": "ad4bd7b7960c8062126cddc7066eab9ebe698950e5e72c89aa4bcfe37504a6c0",
+      "size_bytes": 1368
+    },
+    "scripts/validation/check_sampling_inference.py": {
+      "git_lfs": false,
+      "sha256": "01dc094a92a65b541775a8c2d658be23cfc2dd47dfe29d78a7da3bf29c5aec98",
+      "size_bytes": 1809
+    },
+    "scripts/validation/run_smoke_test.sh": {
+      "git_lfs": false,
+      "sha256": "3855400ef59d3f067f8ba302daba6a16c63544183719c7dcfbe3c6d94a07abc7",
+      "size_bytes": 2682
+    },
+    "scripts/validation/verify_release_assets.py": {
+      "git_lfs": false,
+      "sha256": "1c3d7c986ee5ff628d2466b54397454e27f2add4db200d0905186972381d0d4a",
+      "size_bytes": 1457
     },
     "scripts/verify_release_assets.py": {
       "git_lfs": false,
-      "sha256": "68532fb156d7bb9f1b6f9b1daac351cfebe96648e1947baecf7957e5aca3ff14",
-      "size_bytes": 1457
+      "sha256": "14057fea030b1250d5d04957765d27a7916e3f2efbc542b025ffc0eed5655dca",
+      "size_bytes": 452
     },
     "src/amp_design/__init__.py": {
       "git_lfs": false,
@@ -277,108 +362,228 @@
     },
     "src/amp_design/activity_scoring.py": {
       "git_lfs": false,
-      "sha256": "cfe0d62c0dc8457513c906008a4156854e812dc8beb7bd568347372855707af5",
-      "size_bytes": 7862
+      "sha256": "07458eab7c6900da44596e4bb81ef73703debb50270fd0b72dd770a272b4a5a6",
+      "size_bytes": 380
     },
     "src/amp_design/apex.py": {
       "git_lfs": false,
-      "sha256": "451aa5668834c9856f13a6f69a1af696a68eb9a18793408d17337945b8e98eb2",
-      "size_bytes": 17729
+      "sha256": "c7b673683a5702923e779d6152b36edc69a51f60790607399c0d53fd0ce5cff2",
+      "size_bytes": 372
     },
     "src/amp_design/apex_pathogen.py": {
       "git_lfs": false,
-      "sha256": "7d38dd1bf39e003877c8e12ac7af5d86b234ed25a1c72bc09fe25c7553ae9031",
-      "size_bytes": 13603
+      "sha256": "9605a5e83f4bbb4d1b243f72d9736827c979bdf5fba5465c1e6347d075e1ddd5",
+      "size_bytes": 390
     },
     "src/amp_design/data.py": {
+      "git_lfs": false,
+      "sha256": "1d9e5073553e1dcb197d200014223abf982db51612e2b6bf2643c6781f95acff",
+      "size_bytes": 382
+    },
+    "src/amp_design/datasets/__init__.py": {
+      "git_lfs": false,
+      "sha256": "0bc10cc457198441f28104f52b45e646a28bd17222b36f87607b5dea8abbee1c",
+      "size_bytes": 38
+    },
+    "src/amp_design/datasets/preparation.py": {
       "git_lfs": false,
       "sha256": "8f1ccef4f22067ce651780014dfeac82bb4ffddbbb6d54d4caa82be3257dfd2a",
       "size_bytes": 21949
     },
     "src/amp_design/evaluate.py": {
       "git_lfs": false,
-      "sha256": "fd6b6e85c77c9cd981c9e632223384ccd82c70de8256b36a470a04e92e13cb6c",
-      "size_bytes": 9805
+      "sha256": "aa8747277f8921916179e18260d759d8bff28dbd5a58764c7cabe99a52334429",
+      "size_bytes": 396
+    },
+    "src/amp_design/evaluation/__init__.py": {
+      "git_lfs": false,
+      "sha256": "6a71fbf91b9e06133f1dc867eea3020bbd5f3bc8cddb6dd82e6a84a60c0481be",
+      "size_bytes": 40
+    },
+    "src/amp_design/evaluation/sequence_metrics.py": {
+      "git_lfs": false,
+      "sha256": "482d70010899074653e9abe23c22a3ae353af68b3fe25e773b949d4bff64d714",
+      "size_bytes": 9826
     },
     "src/amp_design/external_safety.py": {
       "git_lfs": false,
-      "sha256": "f724c89408a753be7eb10cf7bcba9650176d75122a6910ccdeffb001d4ebdf0d",
-      "size_bytes": 4935
+      "sha256": "6abe4d321c693f01d1bf12080d5c95371a2510113e78861cc6db9c9c0124cec1",
+      "size_bytes": 376
     },
     "src/amp_design/flow_matching.py": {
       "git_lfs": false,
-      "sha256": "ea465a5363d6b728f75a529d7a214ecc7001558f588d0e0bf42f2bbd34abfd90",
-      "size_bytes": 6507
+      "sha256": "ad3d81158a4a0f813522430bb2039ee7ad5e41284b0cb802d90182f710ded9e8",
+      "size_bytes": 390
     },
     "src/amp_design/generate.py": {
       "git_lfs": false,
-      "sha256": "68d26a3f235703a09e3d33061f8374840075018ff35e3b42033763bc16417cb6",
-      "size_bytes": 6223
+      "sha256": "cc73651428823a87101e2c4d74ff538fd9bc65cba5b889f2cd5b1926bfceeafc",
+      "size_bytes": 380
+    },
+    "src/amp_design/generation/__init__.py": {
+      "git_lfs": false,
+      "sha256": "43d45d0291e8847e3debdce640fbccd6d55cc9c1eda26bf0bb68a42c98a4b518",
+      "size_bytes": 40
+    },
+    "src/amp_design/generation/flow_matching.py": {
+      "git_lfs": false,
+      "sha256": "ff9082f590583e5c50acae8910db66798587d2ec7835ba49a125ebe78ddf3a05",
+      "size_bytes": 6549
+    },
+    "src/amp_design/generation/model.py": {
+      "git_lfs": false,
+      "sha256": "7b15ef5627a513d2bd5b3f95630828fed18ad87decee8280dcbfc63f3bced43a",
+      "size_bytes": 8578
+    },
+    "src/amp_design/generation/samplers.py": {
+      "git_lfs": false,
+      "sha256": "1a22f24df79d364ab96042ced7bdef900e5a21792f23552abac6c4b9e18611f6",
+      "size_bytes": 4040
+    },
+    "src/amp_design/generation/sampling.py": {
+      "git_lfs": false,
+      "sha256": "a86da086f3437162c1132094e1234fa8bd081f90525ae6201dfd34a7fe4cfcf1",
+      "size_bytes": 6302
+    },
+    "src/amp_design/generation/sharded_sampling.py": {
+      "git_lfs": false,
+      "sha256": "c2023e63a22cecf83913a38c1396db8f6731aaa0a1bbebccc850461a616e79ed",
+      "size_bytes": 9370
+    },
+    "src/amp_design/generation/tokenizer.py": {
+      "git_lfs": false,
+      "sha256": "a4a21ef2aa6accf6627a21f041cb393d369c08dc926bea8c0eb847aef888363e",
+      "size_bytes": 3653
+    },
+    "src/amp_design/generation/training.py": {
+      "git_lfs": false,
+      "sha256": "f095ec8baad80f823fd1ad46b3f6554f8adf28cf445852782520fed5fbaddac9",
+      "size_bytes": 20825
     },
     "src/amp_design/genetic_pareto.py": {
+      "git_lfs": false,
+      "sha256": "89d444fc190c34418e84e4823e66a18e317ac45cc6e7cdb9988b4eb00ae11d73",
+      "size_bytes": 382
+    },
+    "src/amp_design/model.py": {
+      "git_lfs": false,
+      "sha256": "05a88227f6eca3378b8129e1bc3947271f76a6d200c4946cfd7973b9a468117d",
+      "size_bytes": 374
+    },
+    "src/amp_design/objectives.py": {
+      "git_lfs": false,
+      "sha256": "ff807c5cad1fc16ecb972ebb640a15723c7006b9c011d782ee7120a89df1094f",
+      "size_bytes": 388
+    },
+    "src/amp_design/optimization/__init__.py": {
+      "git_lfs": false,
+      "sha256": "f92d1d87586064aeac0a7d8c2e81ba30d8ff304f88aed3aadc5e2acaa9f7a4ad",
+      "size_bytes": 42
+    },
+    "src/amp_design/optimization/genetic.py": {
       "git_lfs": false,
       "sha256": "7f76d6f060dad6bf738397eb65b5a34684b3c6d410dd2dfed8e09235044d13a5",
       "size_bytes": 19243
     },
-    "src/amp_design/model.py": {
-      "git_lfs": false,
-      "sha256": "c365ffb12fdea086f8433395c8060862e47fb8a57ae768a2b1b3e4ce02e76874",
-      "size_bytes": 8557
-    },
-    "src/amp_design/objectives.py": {
+    "src/amp_design/optimization/objectives.py": {
       "git_lfs": false,
       "sha256": "419cf48087319432c9142e8b8c6618765c3d356ecf4bf3abd4fe70b549eef162",
       "size_bytes": 2478
     },
+    "src/amp_design/optimization/pareto.py": {
+      "git_lfs": false,
+      "sha256": "d676e87f031aca9c8223e90d2431bf4cf87dc522ab087ab8407c06a35d084aa2",
+      "size_bytes": 5836
+    },
+    "src/amp_design/optimization/search.py": {
+      "git_lfs": false,
+      "sha256": "379c4b1de72260e72e8903b3b95f871558ed5df661478c0342be91df05ef60bd",
+      "size_bytes": 58991
+    },
     "src/amp_design/pareto.py": {
       "git_lfs": false,
-      "sha256": "6994b16c904ad6dc01bcf5cd5f07a5a567a3749f2b0d328dbf163c35a33d04a0",
-      "size_bytes": 5813
+      "sha256": "a8bd24144d07411881cf7a2fd321cb01a814183dd29ba72878aefda148bf54f0",
+      "size_bytes": 380
     },
     "src/amp_design/pareto_finalization.py": {
       "git_lfs": false,
-      "sha256": "22586709fe9aa2dc583778aed0d309dc5502c23ebaeefb9299ff7dbef7bd5018",
-      "size_bytes": 9873
+      "sha256": "f016cafea750dfa3247c62cd824ebefed7a6e1549cde05cde890a8d7e32ec275",
+      "size_bytes": 386
+    },
+    "src/amp_design/predictors/__init__.py": {
+      "git_lfs": false,
+      "sha256": "cb440e3be905263d912ca80b86d375d0d34dfcd6868377325a325fcc34365244",
+      "size_bytes": 40
+    },
+    "src/amp_design/predictors/activity.py": {
+      "git_lfs": false,
+      "sha256": "ab825c84becfb735730e10008bb9ad2e73bb913bdf3bbc53cf9c6a93db4036b9",
+      "size_bytes": 7904
+    },
+    "src/amp_design/predictors/apex.py": {
+      "git_lfs": false,
+      "sha256": "ff9c15d04da2787e2023bd51b28288ba1715e6ff70eebf4df09cd54fd260e737",
+      "size_bytes": 17750
+    },
+    "src/amp_design/predictors/apex_pathogen.py": {
+      "git_lfs": false,
+      "sha256": "c2fdb97f5bde2127f89c080ae3edc0f02572a0c6d660e8b9945da4d92b6c7c55",
+      "size_bytes": 13624
+    },
+    "src/amp_design/predictors/safety.py": {
+      "git_lfs": false,
+      "sha256": "f724c89408a753be7eb10cf7bcba9650176d75122a6910ccdeffb001d4ebdf0d",
+      "size_bytes": 4935
     },
     "src/amp_design/production_sampling.py": {
       "git_lfs": false,
-      "sha256": "62ca873dacc65853563aa2f16e4c42157e82fb0323239a91a2ffe5771fdc9856",
-      "size_bytes": 9319
+      "sha256": "5c339d468535da0ef272e2fc4e83aef98cd6fb87d73ad41e5bde56f62a631329",
+      "size_bytes": 396
     },
     "src/amp_design/publication_pipeline.py": {
       "git_lfs": false,
-      "sha256": "974021cc0c9ab7f98684f3dc42d18ac24fb990aaf9dd506870208064fe2fdce3",
-      "size_bytes": 17602
+      "sha256": "6c31aa49da792222ff763d955e76256aea04ab15b8be709969d5d6296c300759",
+      "size_bytes": 384
     },
     "src/amp_design/release_cli.py": {
       "git_lfs": false,
-      "sha256": "e5a196d9b565d8ee8306f5a5df0242e808959ff47bf986ae11a11bdae0e6722b",
-      "size_bytes": 13971
+      "sha256": "89188a14d2380c27fdc020da93d4e5a9f9b767d4821e06a4ca7c312aa528ea0d",
+      "size_bytes": 368
     },
     "src/amp_design/release_config.py": {
       "git_lfs": false,
-      "sha256": "8f11acca320a94f8e992bf8b6ff5c5a3158932a68e1edffa03a2a351f44df2f4",
-      "size_bytes": 28553
+      "sha256": "5964058a779cad77e66c93fa62e708c236e63de5c0403a46c3569e92a5ad1c77",
+      "size_bytes": 374
     },
     "src/amp_design/release_optimization.py": {
       "git_lfs": false,
-      "sha256": "369eb1d15379766b2c94c44e427853cade2152bdf112c1b15bcfb30788067e8b",
-      "size_bytes": 58856
+      "sha256": "27b1c827692dddb7d964c281d2ad1b528e2243f8ea579c251cc9ed17f04770bc",
+      "size_bytes": 380
     },
     "src/amp_design/release_pipeline.py": {
       "git_lfs": false,
-      "sha256": "89206beb69a1cb50e2f6807119adbd962c2f4a1b829cf934d6f7d3294c19fb27",
-      "size_bytes": 28522
+      "sha256": "bfe9b697bf182a8ec7ba5b478d1052df6e631e1da9edc94c6c483be4e12bcec4",
+      "size_bytes": 376
     },
     "src/amp_design/samplers.py": {
       "git_lfs": false,
-      "sha256": "0c2100b3fcc2921b3cc5186b0a8b1c8c57723b51833cbb86c4c97bf6793a95e4",
-      "size_bytes": 4019
+      "sha256": "9d7da594a0156c13510979f66b0fb635efd3d02c11198d072cc55a5b13bd88df",
+      "size_bytes": 380
+    },
+    "src/amp_design/screening/__init__.py": {
+      "git_lfs": false,
+      "sha256": "cf1eb7d763ec6ca61260e3d658c4d7575b704c13334e20fed2f8c9a07c8012e4",
+      "size_bytes": 39
+    },
+    "src/amp_design/screening/finalization.py": {
+      "git_lfs": false,
+      "sha256": "f91d0fa23a285cdf8348dcfab90913261d4182e97b1d327f3e5e49756b333c8b",
+      "size_bytes": 9889
     },
     "src/amp_design/templates/publication_pipeline_apex_dual_v1.yaml": {
       "git_lfs": false,
-      "sha256": "b1883c64095127b09337fbea504db170e2680f2842b9931688782a315af9e66d",
-      "size_bytes": 4883
+      "sha256": "9ffc9d01c4162fdc4015d9df54141e8c3b1a7c8ce531c730e954716fc3558c98",
+      "size_bytes": 4899
     },
     "src/amp_design/templates/release_optimization_v1_3.yaml": {
       "git_lfs": false,
@@ -397,18 +602,58 @@
     },
     "src/amp_design/tokenizer.py": {
       "git_lfs": false,
-      "sha256": "a4a21ef2aa6accf6627a21f041cb393d369c08dc926bea8c0eb847aef888363e",
-      "size_bytes": 3653
+      "sha256": "6c549eac4667d4d6156e22692124fb21f5eea61a89561223860a60a5a1efbe65",
+      "size_bytes": 382
     },
     "src/amp_design/tracking.py": {
+      "git_lfs": false,
+      "sha256": "7dab8a46ec12fd075b423e1dc102825b817ae61913e2fab97aa1b685ebd40929",
+      "size_bytes": 370
+    },
+    "src/amp_design/training.py": {
+      "git_lfs": false,
+      "sha256": "4d3f3e98fa0f5b15497587974b8abbc56a22c1eacf6025910ebfcee82c738629",
+      "size_bytes": 380
+    },
+    "src/amp_design/utils/__init__.py": {
+      "git_lfs": false,
+      "sha256": "4919b52444eb33dbd9cbcd5c5d09febdfdb7a475019129ba61c697086878cef0",
+      "size_bytes": 35
+    },
+    "src/amp_design/utils/paths.py": {
+      "git_lfs": false,
+      "sha256": "da615035ed5fe5b2ad444756edf8bd28db61a17d269aff36c702ef25039d209b",
+      "size_bytes": 189
+    },
+    "src/amp_design/utils/tracking.py": {
       "git_lfs": false,
       "sha256": "6ff9c2ab287edc5ce7c1aca1fa1d14064abb8075e49624b9fa90afffb55926df",
       "size_bytes": 4211
     },
-    "src/amp_design/training.py": {
+    "src/amp_design/workflows/__init__.py": {
       "git_lfs": false,
-      "sha256": "fe38589a67aa7ec203632c01d495a480a514ac38fde2f79806dd266e37b512fc",
-      "size_bytes": 20702
+      "sha256": "8bf7110b11cced9295bc389ed4ef88a4f4466f06f7301c32b3e4ebdc7f22697f",
+      "size_bytes": 39
+    },
+    "src/amp_design/workflows/cli.py": {
+      "git_lfs": false,
+      "sha256": "49e8e20272b7c9533967c8013b0168a0153b50054bcb90216c4e481c35e174b1",
+      "size_bytes": 14112
+    },
+    "src/amp_design/workflows/config.py": {
+      "git_lfs": false,
+      "sha256": "f272fa561dbe783a24419ba798cac44004b92fec7725b1ffc74093e3412b4a9b",
+      "size_bytes": 28587
+    },
+    "src/amp_design/workflows/publication.py": {
+      "git_lfs": false,
+      "sha256": "e65e2a80d5c9a75184380ec41fc540c63397ad6fcb38b02d7a684dbebc5b1adb",
+      "size_bytes": 17704
+    },
+    "src/amp_design/workflows/release.py": {
+      "git_lfs": false,
+      "sha256": "48d1ce038c42ca789ab68e66acba40c4dc2cc83b4bd31b69af14c5c97c2200f0",
+      "size_bytes": 28606
     },
     "tests/test_activity_scoring.py": {
       "git_lfs": false,
@@ -455,6 +700,11 @@
       "sha256": "0d1d8f17afa457553a195af65db0313006754c4d4cd1144d1fe4afa1f9bb961a",
       "size_bytes": 1668
     },
+    "tests/test_module_layout.py": {
+      "git_lfs": false,
+      "sha256": "695a7806d98d6924e14895d96b7d38f6d98895624fa2fe566dfae15476d544fd",
+      "size_bytes": 4506
+    },
     "tests/test_package.py": {
       "git_lfs": false,
       "sha256": "608536c0e62ff225a6f95c289ff8c272e9f6cb5bded3e9ec28adf4a7c1f91c3b",
@@ -482,8 +732,8 @@
     },
     "tests/test_release_bootstrap.py": {
       "git_lfs": false,
-      "sha256": "ba2aeebb9add5429cd9a995153ac3a13f6d1313fb6077273e03a86c5355a4849",
-      "size_bytes": 3886
+      "sha256": "31d1c52ecd8240d6b6ddc84d573e572ee24b27090b00bb0c01cab6cd92b534bb",
+      "size_bytes": 3976
     },
     "tests/test_release_config.py": {
       "git_lfs": false,
@@ -582,5 +832,17 @@
   },
   "release": "amp-design-v1.3.0",
   "schema_version": 1,
-  "source_revision": "088c278dfda659ff46ef1804589a93745b3a312d"
+  "source_revision": "088c278dfda659ff46ef1804589a93745b3a312d",
+  "code_layout": {
+    "base_commit": "c679141736d0940f906a41640a2996731988e6fb",
+    "mapping": "docs/module_moves.json",
+    "legacy_entrypoints_retained": true,
+    "weights_and_scientific_results_changed": false
+  },
+  "scorer_training_sources": {
+    "manifest": "scripts/training/source_manifest.json",
+    "server_sources_verified": true,
+    "exact_released_weight_reproduction_verified": false,
+    "training_executed": false
+  }
 }

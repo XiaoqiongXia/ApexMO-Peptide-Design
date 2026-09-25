@@ -5,3 +5,7 @@ include configs/sampling.yaml
 include configs/optimization.yaml
 include docs/usage.md
 include docs/images/Fig_1.png
+include docs/code_layout.md
+include docs/module_moves.json
+recursive-include scripts *.py *.sh
+recursive-include scripts/training *.md *.json

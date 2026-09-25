@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-09-25T18:28:00.938434+00:00",
+  "source": "Current server working-copy scripts; hashes verified by read-only SSH",
+  "upstream_git_commit": null,
+  "upstream_git_commit_note": "No historical training commit has been established.",
+  "server_results_modified": false,
+  "training_executed_during_integration": false,
+  "released_safety_manifest": "models/safety/pretrain_manifest.json",
+  "released_safety_manifest_script_sha256": "b28905cb6c5f7f13890d7abdc2e5f8b3325d13c9a295991c61f32dc9a5b7c0af",
+  "released_weights_reproduced": false,
+  "files": [
+    {
+      "path": "scripts/training/train_custom_scorers_nested_v1_1.py",
+      "upstream_path": "scripts/train_custom_scorers_nested_v1_1.py",
+      "upstream_sha256": "5b59939c5a7e65f4a4c5e3d1052cccef14c99cbc8722dbd11b8ad176c29efbef",
+      "repository_sha256": "a25463e8c0a29aa8a410d43f806feb1c5e56e396827e6aff8a3393bdd731ccdf",
+      "purpose": "toxicity_and_hemolysis_nested_cv",
+      "weight_provenance_status": "does_not_match_released_model_script_hash",
+      "only_source_edit": {
+        "from": "Path(__file__).resolve().parents[1]",
+        "to": "Path(__file__).resolve().parents[2]",
+        "occurrences": 1
+      }
+    },
+    {
+      "path": "scripts/training/train_custom_scorers.py",
+      "upstream_path": "scripts/train_custom_scorers.py",
+      "upstream_sha256": "e28949f818bdbc4a80dc97107360a945bb141e846c9c1bf7485e6e0ed4b9d8c0",
+      "repository_sha256": "2cffe6927123168c8e040dcb928e2bb8f03cb1621644c38086eed8cdb2c7832c",
+      "purpose": "legacy_safety_and_exploratory_stability_regression",
+      "weight_provenance_status": "historical_reference_exact_weight_provenance_unverified",
+      "only_source_edit": {
+        "from": "Path(__file__).resolve().parents[1]",
+        "to": "Path(__file__).resolve().parents[2]",
+        "occurrences": 1
+      }
+    },
+    {
+      "path": "scripts/training/train_stability_classifier.py",
+      "upstream_path": "scripts/train_stability_classifier.py",
+      "upstream_sha256": "5c290fad7e3580633a887a4b06022946b3ccaef3589bf540b11e555ec47c7bb2",
+      "repository_sha256": "964b66c03214160f117324b709096ec7bcbdf95aca15b2b29d8d889a7110f975",
+      "purpose": "one_hour_stability_classifier_cross_validation",
+      "weight_provenance_status": "evaluation_script_does_not_export_final_classifier",
+      "only_source_edit": {
+        "from": "Path(__file__).resolve().parents[1]",
+        "to": "Path(__file__).resolve().parents[2]",
+        "occurrences": 1
+      }
+    }
+  ]
+}

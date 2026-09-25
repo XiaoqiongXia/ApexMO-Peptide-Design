@@ -114,9 +114,9 @@ publication:
   output_dir: outputs/pipeline/final
   apex_pathogen_root: external/apex-pathogen
   hemopi2_root: external/hemopi2/official_zenodo_14676712/hemopi2
-  hemopi2_wrapper: scripts/run_hemopi2_fixed.py
+  hemopi2_wrapper: scripts/scoring/run_hemopi2_fixed.py
   toxinpred3_root: external/toxinpred3
-  toxinpred3_runner: scripts/score_toxinpred3_chunked.py
+  toxinpred3_runner: scripts/scoring/score_toxinpred3_chunked.py
   toxinpred3_python: "${AMP_TOXINPRED3_PYTHON}"
   apex_pathogen_mic_max_um: 128.0
   toxinpred3_threshold: 0.38

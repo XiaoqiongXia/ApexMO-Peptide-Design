@@ -1,12 +1,12 @@
 # Usage guide
 
 Run commands from the repository root. The main entry point is
-`bash scripts/run_full_pipeline.sh`; it loads the environment configured during
+`bash scripts/pipeline/run_full_pipeline.sh`; it loads the environment configured during
 installation and uses `configs/pipeline.yaml` by default.
 
 ## Installation and checks
 
-`bash scripts/bootstrap.sh` creates two Conda environments: `amp_flow` for the
+`bash scripts/setup/bootstrap.sh` creates two Conda environments: `amp_flow` for the
 main pipeline and `amp_toxinpred3` for ToxinPred3's older scikit-learn runtime.
 It retrieves Git LFS files and external model weights, then saves local
 interpreter paths in the ignored `.amp_design_env` file.
@@ -14,12 +14,12 @@ interpreter paths in the ignored `.amp_design_env` file.
 To rerun the installation checks:
 
 ```bash
-bash scripts/run_smoke_test.sh
+bash scripts/validation/run_smoke_test.sh
 ```
 
 These checks include file hashes, configuration loading, a two-sequence
 sampling test and ToxinPred3/HemoPI2 inference. They do not run the full
-optimization. `bash scripts/bootstrap.sh --skip-smoke` skips these checks
+optimization. `bash scripts/setup/bootstrap.sh --skip-smoke` skips these checks
 during setup; run them once all assets are available.
 
 For manual installation, create the environments and fetch the assets:
@@ -30,7 +30,7 @@ git lfs pull
 conda env create -f environment.yml
 conda env create -f environment-toxinpred3.yml
 conda activate amp_flow
-bash scripts/setup_external_assets.sh
+bash scripts/setup/setup_external_assets.sh
 export AMP_TOXINPRED3_PYTHON="$(conda run -n amp_toxinpred3 which python)"
 ```
 
@@ -60,7 +60,7 @@ pipeline lists all three under `sampling_runs` in `configs/pipeline.yaml`.
 ## Complete workflow
 
 ```bash
-bash scripts/run_full_pipeline.sh configs/pipeline.yaml
+bash scripts/pipeline/run_full_pipeline.sh configs/pipeline.yaml
 ```
 
 The default configuration samples 1,000 sequences at each length from 10 to
@@ -122,7 +122,7 @@ outputs in `final/04_final/` include:
 To verify the files shipped with this repository, run:
 
 ```bash
-python scripts/verify_release_assets.py
+python scripts/validation/verify_release_assets.py
 ```
 
 Add `--include-external` to check downloaded assets as well.

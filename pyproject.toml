@@ -34,15 +34,15 @@ dev = [
 ]
 
 [project.scripts]
-amp-design = "amp_design.release_cli:main"
-amp-prepare = "amp_design.data:main"
-amp-train = "amp_design.training:main"
-amp-generate = "amp_design.generate:main"
-amp-sample-shards = "amp_design.production_sampling:main"
-amp-evaluate = "amp_design.evaluate:main"
-amp-apex-score = "amp_design.apex:main"
-amp-apex-pathogen-score = "amp_design.apex_pathogen:main"
-amp-pareto = "amp_design.pareto:main"
+amp-design = "amp_design.workflows.cli:main"
+amp-prepare = "amp_design.datasets.preparation:main"
+amp-train = "amp_design.generation.training:main"
+amp-generate = "amp_design.generation.sampling:main"
+amp-sample-shards = "amp_design.generation.sharded_sampling:main"
+amp-evaluate = "amp_design.evaluation.sequence_metrics:main"
+amp-apex-score = "amp_design.predictors.apex:main"
+amp-apex-pathogen-score = "amp_design.predictors.apex_pathogen:main"
+amp-pareto = "amp_design.optimization.pareto:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
